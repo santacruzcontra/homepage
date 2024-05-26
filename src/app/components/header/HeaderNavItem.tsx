@@ -13,22 +13,24 @@ export type HeaderNavItemSubProps = OptionalKeys<
   "activeClassStr"
 >;
 
+function headerNavInteractionStr(rawActiveClassStr: string) {
+  return rawActiveClassStr
+    .split(/\s/g)
+    .reduce((res, part) => `${res} active:${part} hover:${part}`, "");
+}
+
 export function HeaderNavItem({
   href,
-  activeClassStr: _rawActiveClassStr,
+  activeClassStr,
   className,
   children,
 }: HeaderNavItemProps) {
   const currentPath = usePathname();
 
-  const interactionClassStr = _rawActiveClassStr
-    .split(/\s/g)
-    .reduce((res, part) => `${res} active:${part} hover:${part}`, "");
-
   return (
     <Link
       href={href}
-      className={`${currentPath === href ? _rawActiveClassStr : ""} ${interactionClassStr}${className ? " " + className : ""}`}
+      className={`${currentPath === href ? activeClassStr : ""} ${headerNavInteractionStr(activeClassStr)}${className ? " " + className : ""}`}
     >
       {children}
     </Link>
