@@ -1,4 +1,3 @@
-import { usePathname } from "next/navigation";
 import { ContraLogo } from "./ContraLogo";
 import { BadgeRibbon } from "./BadgeRibbon";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
