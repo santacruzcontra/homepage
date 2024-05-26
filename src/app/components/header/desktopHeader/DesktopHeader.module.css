@@ -1,0 +1,37 @@
+.header {
+    @apply p-4 max-w-5xl mx-auto hidden;
+}
+
+.header > nav a {
+  @apply text-2xl tracking-wide;
+  font-family: var(--title-font);
+}
+
+.header > nav a:hover,
+.header > nav a.active {
+  @apply underline;
+}
+
+.header > nav > .section {
+    @apply flex flex-row flex-grow border-t-2 border-b-2 border-black self-center pt-1 pb-1 w-full
+}
+
+.header > nav > .section > div {
+  @apply flex flex-row flex-grow items-center gap-8 p-2 border-black border-b-4 border-t-4 justify-evenly;
+}
+
+.header > nav > .section.left-section {
+    @apply -mr-4 justify-end justify-self-end
+}
+
+.header > nav > .section.left-section > div {
+    @apply pr-8 
+}
+
+.header > nav > .section.right-section {
+    @apply -ml-4 justify-start;
+}
+
+.header > nav > .section.right-section > div {
+    @apply pl-8
+}
