@@ -34,10 +34,7 @@ function MobilePopoverNav() {
           className={`size-10 rounded-md border-[1px] border-[#B3895D] bg-[#D6AB7D] stroke-2 p-1 text-[#482919] active:border-opacity-30 active:bg-opacity-30 active:text-opacity-80 ${navOpen ? "border-opacity-25 bg-opacity-30 text-opacity-80" : "border-opacity-0 bg-opacity-0 text-opacity-60"}`}
         />
       </PopoverTrigger>
-      <PopoverContent
-        side="bottom"
-        className="mr-2 border-[#B3895D] bg-[#E5C9AE]"
-      >
+      <PopoverContent side="bottom" className="mr-2">
         <p>test popover content</p>
       </PopoverContent>
     </Popover>

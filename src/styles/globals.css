@@ -88,3 +88,8 @@ body > main > div > h1 {
   @apply text-5xl sm:text-[5rem];
   font-family: var(--title-font);
 }
+
+/* Consistent popover styling */
+[data-radix-popper-content-wrapper] > div {
+  @apply border-[#B3895D] bg-[#E5C9AE]
+}
