@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type ReactNode } from "react";
-import Image from "next/image";
-import contraLogo from "../contra-logo-framed.png";
 import styles from "./DesktopHeader.module.css";
+import ContraLogo from "../ContraLogo";
 
 export default function DesktopHeader() {
   const pathname = usePathname();
@@ -14,7 +13,7 @@ export default function DesktopHeader() {
         <div className={`${styles.section} ${styles["left-section"]}`}>
           <div>
             <HeaderNavItem href="/about" currentPath={pathname}>
-              Home
+              About Us
             </HeaderNavItem>
             <HeaderNavItem href="/policies" currentPath={pathname}>
               Policies
@@ -22,12 +21,7 @@ export default function DesktopHeader() {
           </div>
         </div>
         <HeaderNavItem href="/" currentPath={pathname}>
-          <Image
-            src={contraLogo}
-            className="relative z-10 rounded-full "
-            alt="Round-framed image of 8 contra dance goers."
-            height={200}
-          />
+          <ContraLogo />
         </HeaderNavItem>
         <div className={`${styles.section} ${styles["right-section"]}`}>
           <div>
