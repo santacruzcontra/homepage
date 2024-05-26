@@ -1,54 +1,31 @@
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { type ReactNode } from "react";
 import { ContraLogo } from "./ContraLogo";
 import { BadgeRibbon } from "./BadgeRibbon";
+import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
 
 export function DesktopHeader() {
-  const pathname = usePathname();
-
   return (
     <header className="mx-auto hidden max-w-5xl p-4 desktop:block">
-      <nav className="grid grid-cols-[1fr_auto_1fr] items-center justify-center px-2 py-4">
+      <nav className="font-title grid grid-cols-[1fr_auto_1fr] items-center justify-center px-2 py-4 text-2xl tracking-wide ">
         <BadgeRibbon left>
-          <HeaderNavItem href="/about" currentPath={pathname}>
-            About Us
-          </HeaderNavItem>
-          <HeaderNavItem href="/policies" currentPath={pathname}>
-            Policies
-          </HeaderNavItem>
+          <DesktopHeaderNavItem href="/about">About Us</DesktopHeaderNavItem>
+          <DesktopHeaderNavItem href="/policies">Policies</DesktopHeaderNavItem>
         </BadgeRibbon>
-        <HeaderNavItem href="/" currentPath={pathname}>
+        <DesktopHeaderNavItem href="/">
           <ContraLogo />
-        </HeaderNavItem>
+        </DesktopHeaderNavItem>
         <BadgeRibbon right>
-          <HeaderNavItem href="/contact" currentPath={pathname}>
-            Contact
-          </HeaderNavItem>
-          <HeaderNavItem href="/more" currentPath={pathname}>
-            More Events
-          </HeaderNavItem>
+          <DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
+          <DesktopHeaderNavItem href="/more">More Events</DesktopHeaderNavItem>
         </BadgeRibbon>
       </nav>
     </header>
   );
 }
 
-function HeaderNavItem({
-  href,
-  currentPath,
-  children,
-}: {
-  href: string;
-  currentPath: string;
-  children: ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`font-title text-2xl tracking-wide ${currentPath === href ? "underline" : ""} hover:underline`}
-    >
-      {children}
-    </Link>
-  );
+function DesktopHeaderNavItem({
+  activeClassStr = "underline",
+  ...props
+}: HeaderNavItemSubProps) {
+  return <HeaderNavItem activeClassStr={activeClassStr} {...props} />;
 }
