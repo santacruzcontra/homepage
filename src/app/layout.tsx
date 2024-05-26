@@ -1,6 +1,14 @@
 import "~/styles/globals.css";
+import styles from "./main-layout.module.css";
+import Header from "./components/header/Header";
+import { Bebas_Neue, Montserrat } from "next/font/google";
 
-import { GeistSans } from "geist/font/sans";
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--title-font",
+});
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Santa Cruz Contra Dance - A monthly social dance gathering.",
@@ -15,8 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${montserrat.className} ${bebasNeue.variable}`}>
+      <body className={styles["page-body"]}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

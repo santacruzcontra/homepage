@@ -1,0 +1,16 @@
+.page-body {
+    @apply bg-gradient-to-b from-[#f8f0e5] to-[#e2c7aa]
+}
+
+.page-body > main {
+    @apply flex min-h-screen flex-col items-stretch justify-start text-black;
+}
+
+.page-body > main > div {
+    @apply container flex flex-col items-start justify-start;
+}
+
+.page-body > main > div > h1 {
+    @apply text-5xl sm:text-[5rem];
+    font-family: var(--title-font)
+}
