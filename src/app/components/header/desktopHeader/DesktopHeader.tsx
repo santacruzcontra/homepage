@@ -1,38 +1,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type ReactNode } from "react";
-import styles from "./DesktopHeader.module.css";
 import ContraLogo from "../ContraLogo";
+import BadgeRibbon from "../BadgeRibbon";
 
 export default function DesktopHeader() {
   const pathname = usePathname();
 
   return (
-    <header className={`${styles.header} desktop:block hidden`}>
-      <nav className="grid grid-cols-[1fr_auto_1fr] justify-center p-4">
-        <div className={`${styles.section} ${styles["left-section"]}`}>
-          <div>
-            <HeaderNavItem href="/about" currentPath={pathname}>
-              About Us
-            </HeaderNavItem>
-            <HeaderNavItem href="/policies" currentPath={pathname}>
-              Policies
-            </HeaderNavItem>
-          </div>
-        </div>
+    <header className="mx-auto hidden max-w-5xl p-4 desktop:block">
+      <nav className="grid grid-cols-[1fr_auto_1fr] items-center justify-center px-2 py-4">
+        <BadgeRibbon left>
+          <HeaderNavItem href="/about" currentPath={pathname}>
+            About Us
+          </HeaderNavItem>
+          <HeaderNavItem href="/policies" currentPath={pathname}>
+            Policies
+          </HeaderNavItem>
+        </BadgeRibbon>
         <HeaderNavItem href="/" currentPath={pathname}>
           <ContraLogo />
         </HeaderNavItem>
-        <div className={`${styles.section} ${styles["right-section"]}`}>
-          <div>
-            <HeaderNavItem href="/contact" currentPath={pathname}>
-              Contact
-            </HeaderNavItem>
-            <HeaderNavItem href="/more" currentPath={pathname}>
-              More Events
-            </HeaderNavItem>
-          </div>
-        </div>
+        <BadgeRibbon right>
+          <HeaderNavItem href="/contact" currentPath={pathname}>
+            Contact
+          </HeaderNavItem>
+          <HeaderNavItem href="/more" currentPath={pathname}>
+            More Events
+          </HeaderNavItem>
+        </BadgeRibbon>
       </nav>
     </header>
   );
@@ -48,7 +44,10 @@ function HeaderNavItem({
   children: ReactNode;
 }) {
   return (
-    <Link href={href} className={currentPath === href ? styles.active : ""}>
+    <Link
+      href={href}
+      className={`font-title text-2xl tracking-wide ${currentPath === href ? "underline" : ""} hover:underline`}
+    >
       {children}
     </Link>
   );

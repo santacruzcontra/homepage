@@ -1,5 +1,4 @@
 import "~/styles/globals.css";
-import styles from "./main-layout.module.css";
 import Header from "./components/header/Header";
 import { Bebas_Neue, Montserrat } from "next/font/google";
 
@@ -24,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.className} ${bebasNeue.variable}`}>
-      <body className={styles["page-body"]}>
+      <body className="bg-gradient-to-b from-[#f8f0e5] to-[#e2c7aa]  text-stone-950">
         <Header />
         {children}
       </body>

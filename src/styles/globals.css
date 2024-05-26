@@ -75,3 +75,16 @@
   }
 }
 
+/* Generic page styling */
+body > main {
+  @apply flex min-h-screen flex-col items-stretch justify-start;
+}
+
+body > main > div {
+  @apply container flex flex-col items-start justify-start;
+}
+
+body > main > div > h1 {
+  @apply text-5xl sm:text-[5rem];
+  font-family: var(--title-font);
+}
