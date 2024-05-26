@@ -91,5 +91,5 @@ body > main > div > h1 {
 
 /* Consistent popover styling */
 [data-radix-popper-content-wrapper] > div {
-  @apply border-[#B3895D] bg-[#E5C9AE]
+  @apply border-[#B3895D] bg-[#E5C9AE] bg-opacity-60 backdrop-blur-md
 }
