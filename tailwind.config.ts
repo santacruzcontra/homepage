@@ -74,6 +74,9 @@ const config = {
       screens: {
         desktop: "800px",
       },
+      fontFamily: {
+        title: ["var(--title-font)"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
