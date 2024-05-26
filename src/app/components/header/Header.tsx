@@ -1,9 +1,9 @@
 "use client";
 
-import DesktopHeader from "./desktopHeader/DesktopHeader";
-import MobileHeader from "./mobileHeader/MobileHeader";
+import { DesktopHeader } from "./DesktopHeader";
+import { MobileHeader } from "./MobileHeader";
 
-export default function Header() {
+export function Header() {
   return (
     <>
       <DesktopHeader />

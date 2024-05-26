@@ -3,7 +3,7 @@
  * and bottom with different sizes. Supports children so that
  * it can be used on desktop and mobile headers.
  */
-export default function BadgeRibbon({
+export function BadgeRibbon({
   left,
   children,
 }: React.PropsWithChildren<

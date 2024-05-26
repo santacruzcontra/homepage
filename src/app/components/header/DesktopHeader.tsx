@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type ReactNode } from "react";
-import ContraLogo from "../ContraLogo";
-import BadgeRibbon from "../BadgeRibbon";
+import { ContraLogo } from "./ContraLogo";
+import { BadgeRibbon } from "./BadgeRibbon";
 
-export default function DesktopHeader() {
+export function DesktopHeader() {
   const pathname = usePathname();
 
   return (

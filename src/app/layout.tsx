@@ -1,5 +1,5 @@
 import "~/styles/globals.css";
-import Header from "./components/header/Header";
+import { Header } from "./components/header/Header";
 import { Bebas_Neue, Montserrat } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({
