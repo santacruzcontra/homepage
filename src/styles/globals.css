@@ -77,7 +77,7 @@
 
 /* Generic page styling */
 body > main {
-  @apply flex min-h-screen flex-col items-stretch justify-start;
+  @apply flex flex-col items-stretch justify-start;
 }
 
 body > main > div {
