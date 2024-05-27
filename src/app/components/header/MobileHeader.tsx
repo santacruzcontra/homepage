@@ -37,7 +37,7 @@ function MobilePopoverNav() {
     <Popover open={navOpen} onOpenChange={setNavOpen}>
       <PopoverTrigger className="absolute right-2 top-2">
         <MenuIcon
-          className={`size-10 rounded-md border-[1px] border-[#B3895D] bg-[#D6AB7D] stroke-2 p-1 text-[#482919] active:border-opacity-30 active:bg-opacity-30 active:text-opacity-80 ${navOpen ? "border-opacity-25 bg-opacity-30 text-opacity-80" : "border-opacity-0 bg-opacity-0 text-opacity-60"}`}
+          className={`size-10 rounded-md border-[1px] border-[#B3895D] bg-[#D6AB7D] stroke-2 p-1 text-[#482919] active:border-opacity-30 active:bg-opacity-30 active:text-opacity-80 sm:size-12 sm:p-2 md:size-14 ${navOpen ? "border-opacity-25 bg-opacity-30 text-opacity-80" : "border-opacity-0 bg-opacity-0 text-opacity-60"}`}
         />
       </PopoverTrigger>
       <PopoverContent
@@ -47,10 +47,10 @@ function MobilePopoverNav() {
       >
         <nav className="flex flex-col items-stretch gap-0">
           <MobileHeaderNavItem href="/">Home</MobileHeaderNavItem>
-          <MobileHeaderNavItem href="/about">About Us</MobileHeaderNavItem>
+          <MobileHeaderNavItem href="/about">About</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/policies">Policies</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/contact">Contact</MobileHeaderNavItem>
-          <MobileHeaderNavItem href="/events">More Events</MobileHeaderNavItem>
+          <MobileHeaderNavItem href="/events">Events</MobileHeaderNavItem>
         </nav>
       </PopoverContent>
     </Popover>
@@ -64,7 +64,7 @@ function MobileHeaderNavItem({
   return (
     <HeaderNavItem
       activeClassStr={activeClassStr}
-      className="font-title border-b-[1px] border-[#B3895D] border-opacity-50 px-6 py-3 text-right text-xl tracking-wide last:border-b-0 min-[500px]:px-8 min-[500px]:py-4 min-[500px]:text-2xl sm:px-10 sm:py-5 sm:text-3xl"
+      className="font-title border-b-[1px] border-[#B3895D] border-opacity-50 py-3 pl-12 pr-6 text-right text-xl tracking-wide last:border-b-0 min-[500px]:py-4 min-[500px]:pl-16 min-[500px]:pr-8 min-[500px]:text-2xl sm:py-5 sm:pl-20 sm:pr-10 sm:text-3xl"
       {...props}
     />
   );
