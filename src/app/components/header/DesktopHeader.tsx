@@ -1,7 +1,6 @@
 import { ContraLogo } from "./ContraLogo";
 import { BadgeRibbon } from "./BadgeRibbon";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
-import Link from "next/link";
 
 export function DesktopHeader() {
   return (
@@ -10,9 +9,7 @@ export function DesktopHeader() {
         <BadgeRibbon left>
           <div>&nbsp;</div>
         </BadgeRibbon>
-        <Link href="/">
-          <ContraLogo />
-        </Link>
+        <ContraLogo />
         <BadgeRibbon right>
           <DesktopHeaderNavItem href="/">Home</DesktopHeaderNavItem>
           <DesktopHeaderNavItem href="/about">About</DesktopHeaderNavItem>

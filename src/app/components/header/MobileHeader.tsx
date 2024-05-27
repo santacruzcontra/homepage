@@ -1,14 +1,13 @@
 import { MenuIcon } from "lucide-react";
-import { BadgeRibbon } from "./BadgeRibbon";
-import { ContraLogo } from "./ContraLogo";
+import { useCallback, useState } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
-import { useCallback, useState } from "react";
+import { BadgeRibbon } from "./BadgeRibbon";
+import { ContraLogo } from "./ContraLogo";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
-import Link from "next/link";
 
 export function MobileHeader() {
   return (
@@ -17,9 +16,7 @@ export function MobileHeader() {
       <div className="flex flex-col items-center gap-2 px-2 py-4">
         <div className="grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center">
           <BadgeRibbon left />
-          <Link href="/">
-            <ContraLogo height={128} />
-          </Link>
+          <ContraLogo height={128} />
           <BadgeRibbon right />
         </div>
       </div>

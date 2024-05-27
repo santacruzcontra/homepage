@@ -1,6 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 import contraLogo from "./contra-logo-framed.png";
 import { type OptionalKeys } from "~/utilTypes";
+import Link from "next/link";
 
 export function ContraLogo({
   height = 200,
@@ -10,12 +11,14 @@ export function ContraLogo({
   ...props
 }: OptionalKeys<ImageProps, "src" | "alt">) {
   return (
-    <Image
-      src={src}
-      className={"relative z-10 rounded-full " + className}
-      alt={alt}
-      height={height}
-      {...props}
-    />
+    <Link href="/" className="rounded-full">
+      <Image
+        src={src}
+        className={"relative z-10 rounded-full " + className}
+        alt={alt}
+        height={height}
+        {...props}
+      />
+    </Link>
   );
 }
