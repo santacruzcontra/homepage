@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function ContraLogo({
   height = 200,
-  alt = "Round-framed image of 8 contra dance goers on a gold background.",
+  alt = "Round-framed ai-generated image of 8 contra dance goers on a gold background.",
   className = "",
   src = contraLogo,
   ...props
