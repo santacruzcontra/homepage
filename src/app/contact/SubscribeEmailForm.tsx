@@ -47,7 +47,12 @@ export function SubscribeEmailForm() {
             <FormItem>
               <FormLabel>Enter email address</FormLabel>
               <FormControl>
-                <Input placeholder="Enter email here..." {...field} />
+                <Input
+                  placeholder="Enter email here..."
+                  type="email"
+                  autoCapitalize="false"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
