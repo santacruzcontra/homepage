@@ -50,7 +50,7 @@ function MobilePopoverNav() {
           <MobileHeaderNavItem href="/about">About Us</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/policies">Policies</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/contact">Contact</MobileHeaderNavItem>
-          <MobileHeaderNavItem href="/more">More Events</MobileHeaderNavItem>
+          <MobileHeaderNavItem href="/events">More Events</MobileHeaderNavItem>
         </nav>
       </PopoverContent>
     </Popover>

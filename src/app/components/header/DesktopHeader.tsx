@@ -18,7 +18,7 @@ export function DesktopHeader() {
           <DesktopHeaderNavItem href="/about">About</DesktopHeaderNavItem>
           <DesktopHeaderNavItem href="/policies">Policies</DesktopHeaderNavItem>
           <DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
-          <DesktopHeaderNavItem href="/more">Events</DesktopHeaderNavItem>
+          <DesktopHeaderNavItem href="/events">Events</DesktopHeaderNavItem>
         </BadgeRibbon>
       </nav>
     </header>
