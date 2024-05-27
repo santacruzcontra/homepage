@@ -16,7 +16,7 @@ export default function ContactPage() {
   return (
     <>
       <PageTitle>Contact</PageTitle>
-      <div className="m-auto grid max-w-md grid-cols-1 items-stretch justify-start gap-4 p-4 desktop:mt-4 desktop:max-w-4xl desktop:grid-cols-2 lg:mt-6 lg:gap-8 lg:p-8">
+      <div className="m-auto grid max-w-md grid-cols-1 items-stretch justify-start gap-4 p-4 lg:mt-6 lg:gap-8 lg:p-8 desktop:mt-4 desktop:max-w-4xl desktop:grid-cols-2">
         <SubscribeNewsletterCard />
         <FormLinkCard />
       </div>
@@ -57,7 +57,7 @@ function SubscribeNewsletterCard() {
         <CardTitle>Get the newsletter</CardTitle>
         <CardDescription>
           Enter your email to subscribe to our monthly newsletter and hear about
-          upcoming dances.
+          upcoming events.
         </CardDescription>
       </CardHeader>
       <CardContent>
