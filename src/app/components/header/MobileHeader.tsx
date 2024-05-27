@@ -15,7 +15,7 @@ export function MobileHeader() {
     <header className="relative flex flex-col desktop:hidden">
       <MobilePopoverNav />
       <div className="flex flex-col items-center gap-2 px-2 py-4">
-        <div className="grid w-full max-w-lg grid-cols-[1fr_auto_1fr] items-center">
+        <div className="grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center">
           <BadgeRibbon left />
           <Link href="/">
             <ContraLogo height={128} />
@@ -42,7 +42,7 @@ function MobilePopoverNav() {
       </PopoverTrigger>
       <PopoverContent
         side="bottom"
-        className="mr-2 w-fit p-0"
+        className="mr-2 w-fit p-0 desktop:hidden"
         onClick={closeNav}
       >
         <nav className="flex flex-col items-stretch gap-0">
@@ -64,7 +64,7 @@ function MobileHeaderNavItem({
   return (
     <HeaderNavItem
       activeClassStr={activeClassStr}
-      className="font-title border-b-[1px] border-[#B3895D] border-opacity-50 px-6 py-3 text-right text-xl tracking-wide last:border-b-0 sm:text-xl md:px-8 md:py-4 md:text-2xl"
+      className="font-title border-b-[1px] border-[#B3895D] border-opacity-50 px-6 py-3 text-right text-xl tracking-wide last:border-b-0 min-[500px]:px-8 min-[500px]:py-4 min-[500px]:text-2xl sm:px-10 sm:py-5 sm:text-3xl"
       {...props}
     />
   );
