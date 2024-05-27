@@ -1,9 +1,9 @@
+import { PageTitle } from "./components/PageTitle";
+
 export default function HomePage() {
   return (
-    <main>
-      <div>
-        <h1>Home</h1>
-      </div>
-    </main>
+    <>
+      <PageTitle>Santa Cruz Contra</PageTitle>
+    </>
   );
 }

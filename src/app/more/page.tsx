@@ -1,9 +1,9 @@
+import { PageTitle } from "../components/PageTitle";
+
 export default function MoreVenuesPage() {
   return (
-    <main>
-      <div>
-        <h1>More Contra Venues</h1>
-      </div>
-    </main>
+    <>
+      <PageTitle>More Contra Venues</PageTitle>
+    </>
   );
 }

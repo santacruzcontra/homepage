@@ -22,11 +22,6 @@ export function MobileHeader() {
           </Link>
           <BadgeRibbon right />
         </div>
-        <Link href="/">
-          <h2 className="font-title text-4xl sm:text-5xl md:text-6xl">
-            Santa Cruz Contra
-          </h2>
-        </Link>
       </div>
     </header>
   );
