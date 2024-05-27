@@ -1,6 +1,7 @@
 import { ContraLogo } from "./ContraLogo";
 import { BadgeRibbon } from "./BadgeRibbon";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
+import Link from "next/link";
 
 export function DesktopHeader() {
   return (
@@ -10,9 +11,9 @@ export function DesktopHeader() {
           <DesktopHeaderNavItem href="/about">About Us</DesktopHeaderNavItem>
           <DesktopHeaderNavItem href="/policies">Policies</DesktopHeaderNavItem>
         </BadgeRibbon>
-        <DesktopHeaderNavItem href="/">
+        <Link href="/">
           <ContraLogo />
-        </DesktopHeaderNavItem>
+        </Link>
         <BadgeRibbon right>
           <DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
           <DesktopHeaderNavItem href="/more">More Events</DesktopHeaderNavItem>
@@ -26,5 +27,11 @@ function DesktopHeaderNavItem({
   activeClassStr = "underline",
   ...props
 }: HeaderNavItemSubProps) {
-  return <HeaderNavItem activeClassStr={activeClassStr} {...props} />;
+  return (
+    <HeaderNavItem
+      activeClassStr={activeClassStr}
+      className="hover:underline active:underline"
+      {...props}
+    />
+  );
 }
