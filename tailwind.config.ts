@@ -73,6 +73,10 @@ const config = {
       },
       screens: {
         desktop: "800px",
+        // This is added specifically to style the mobile nav menu on certain landscape phone screens
+        smNotShort: {
+          raw: "(min-width: 640px) and (min-height: 465px)",
+        },
       },
       fontFamily: {
         title: ["var(--title-font)"],
