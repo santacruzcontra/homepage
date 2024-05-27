@@ -13,6 +13,7 @@ export function ContraLogo({
   return (
     <Link href="/" className="rounded-full">
       <Image
+        priority
         src={src}
         className={"relative z-10 rounded-full " + className}
         alt={alt}
