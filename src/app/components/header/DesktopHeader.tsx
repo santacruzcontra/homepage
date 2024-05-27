@@ -6,7 +6,7 @@ import Link from "next/link";
 export function DesktopHeader() {
   return (
     <header className="mx-auto hidden max-w-6xl p-4 desktop:block desktop:pb-0">
-      <nav className="font-title grid grid-cols-[3rem_auto_1fr] items-center justify-center px-2 py-4 text-xl tracking-wide min-[850px]:text-2xl lg:pb-0">
+      <nav className="font-title grid grid-cols-[3rem_auto_1fr] items-center justify-center px-2 py-4 text-xl tracking-wide min-[850px]:text-2xl">
         <BadgeRibbon left>
           <div>&nbsp;</div>
         </BadgeRibbon>
