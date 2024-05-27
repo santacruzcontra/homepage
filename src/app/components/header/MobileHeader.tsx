@@ -8,18 +8,25 @@ import {
 } from "~/components/ui/popover";
 import { useCallback, useState } from "react";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
+import Link from "next/link";
 
 export function MobileHeader() {
   return (
     <header className="relative flex flex-col desktop:hidden">
       <MobilePopoverNav />
       <div className="flex flex-col items-center gap-2 px-2 py-4">
-        <div className="grid w-full grid-cols-[1fr_auto_1fr] items-center">
+        <div className="grid w-full max-w-lg grid-cols-[1fr_auto_1fr] items-center">
           <BadgeRibbon left />
-          <ContraLogo height={128} />
+          <Link href="/">
+            <ContraLogo height={128} />
+          </Link>
           <BadgeRibbon right />
         </div>
-        <h2 className="font-title text-4xl md:text-5xl">Santa Cruz Contra</h2>
+        <Link href="/">
+          <h2 className="font-title text-4xl sm:text-5xl md:text-6xl">
+            Santa Cruz Contra
+          </h2>
+        </Link>
       </div>
     </header>
   );
@@ -43,7 +50,7 @@ function MobilePopoverNav() {
         className="mr-2 w-fit p-0"
         onClick={closeNav}
       >
-        <nav className="font-title flex flex-col items-stretch gap-0 text-right text-xl tracking-wide">
+        <nav className="flex flex-col items-stretch gap-0">
           <MobileHeaderNavItem href="/">Home</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/about">About Us</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/policies">Policies</MobileHeaderNavItem>
@@ -62,7 +69,7 @@ function MobileHeaderNavItem({
   return (
     <HeaderNavItem
       activeClassStr={activeClassStr}
-      className="border-b-[1px] border-[#B3895D] border-opacity-50 px-6 py-3 last:border-b-0"
+      className="font-title border-b-[1px] border-[#B3895D] border-opacity-50 px-6 py-3 text-right text-xl tracking-wide last:border-b-0 sm:text-xl md:px-8 md:py-4 md:text-2xl"
       {...props}
     />
   );
