@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.className} ${bebasNeue.variable}`}>
-      <body className="min-h-dvh bg-gradient-to-b from-[#f8f0e5]  to-[#e2c7aa] text-stone-950">
+      <body className="min-h-dvh bg-gradient-to-b from-[#E5D4C3]  to-[#9B744A] text-stone-950 shadow-inner shadow-[#482919]">
         <Header />
         <main className="flex flex-col items-stretch justify-start">
           <div className="container flex flex-col items-start justify-start">
