@@ -30,7 +30,10 @@ export function HomePageCarouselComponent({
   );
 
   const getImage = useCallback(
-    (imageEntry: ContentfulCarouselImage.Entry): React.JSX.Element | null => {
+    (
+      imageEntry: ContentfulCarouselImage.Entry,
+      imgIdx: number,
+    ): React.JSX.Element | null => {
       const imgID = imageEntry.fields.image.sys.id;
 
       // We can't render an image if we don't get one buddy
@@ -45,6 +48,7 @@ export function HomePageCarouselComponent({
             alt={imageEntry.fields.imageDescription}
             width={960}
             height={540}
+            priority={imgIdx === 0}
           />
         </CarouselItem>
       );
