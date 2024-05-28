@@ -4,10 +4,11 @@ import { Suspense } from "react";
 import { HomePageCarouselComponent } from "./HomePageCarouselComponent";
 import { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { ContentfulCarouselImage } from "~/types/Contentful";
+import { Skeleton } from "~/components/ui/skeleton";
 
 export async function HomePageCarousel() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Skeleton className="h-[540px] w-[960px] " />}>
       <HomePageCarouselInner />
     </Suspense>
   );
