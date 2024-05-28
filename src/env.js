@@ -9,6 +9,10 @@ export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
     GOOGLE_CONTACT_FORM_URL: z.string().url(),
+    CONTENTFUL_API_BASE_URL: z.string().url(),
+    CONTENTFUL_API_SPACE_ID: z.string(),
+    CONTENTFUL_API_ENVIRONMENT: z.string(),
+    CONTENTFUL_API_ACCESS_TOKEN: z.string(),
   },
 
   /**
@@ -27,6 +31,10 @@ export const env = createEnv({
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     GOOGLE_CONTACT_FORM_URL: process.env.GOOGLE_CONTACT_FORM_URL,
+    CONTENTFUL_API_BASE_URL: process.env.CONTENTFUL_API_BASE_URL,
+    CONTENTFUL_API_SPACE_ID: process.env.CONTENTFUL_API_SPACE_ID,
+    CONTENTFUL_API_ENVIRONMENT: process.env.CONTENTFUL_API_ENVIRONMENT,
+    CONTENTFUL_API_ACCESS_TOKEN: process.env.CONTENTFUL_API_ACCESS_TOKEN,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
