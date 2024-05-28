@@ -9,6 +9,7 @@ import {
 } from "~/components/ui/carousel";
 import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
+import Autoplay from "embla-carousel-autoplay";
 
 type HomePageCarouselComponentProps = {
   imageArrayRes: Contentful.ArrayResponse<ContentfulCarouselImage.Entry>;
@@ -38,10 +39,12 @@ export function HomePageCarouselComponent({
       }
 
       return (
-        <CarouselItem key={imageEntry.sys.id}>
+        <CarouselItem key={imageEntry.sys.id} className="">
           <Image
-            src={assetsByID[imgID]!.fields.file.url}
+            src={"https:" + assetsByID[imgID]!.fields.file.url}
             alt={imageEntry.fields.imageDescription}
+            width={960}
+            height={540}
           />
         </CarouselItem>
       );
@@ -55,8 +58,15 @@ export function HomePageCarouselComponent({
   }
 
   return (
-    <Carousel>
-      <CarouselContent>{imageArrayRes.items.map(getImage)}</CarouselContent>
-    </Carousel>
+    <div className="flex w-full flex-col items-center p-4">
+      <Carousel
+        plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+        className="max-w-[960px]"
+      >
+        <CarouselContent>
+          <>{imageArrayRes.items.map(getImage)}</>
+        </CarouselContent>
+      </Carousel>
+    </div>
   );
 }
