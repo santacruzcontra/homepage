@@ -17,6 +17,8 @@ async function HomePageCarouselInner() {
   const imageArrayRes =
     await Contentful.entries.getList<ContentfulCarouselImage.Entry>({
       contentType: ContentfulCarouselImage.id,
+      limit: 10,
+      orderBy: { field: "sys.updatedAt", desc: true },
     });
 
   return <HomePageCarouselComponent imageArrayRes={imageArrayRes} />;
