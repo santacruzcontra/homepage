@@ -21,6 +21,14 @@ export interface _GetEntriesByParamsInput {
   include?: number;
   hasTags?: string | string[] | boolean;
   hasAllTags?: string | string[];
+  orderBy?: string | EntryOrderQuerySpec | (string | EntryOrderQuerySpec)[];
+}
+
+export interface EntryOrderQuerySpec {
+  field: string;
+  // Sorts ascending by default
+  asc?: boolean;
+  desc?: boolean;
 }
 
 export interface GetEntriesByParams {
@@ -31,6 +39,7 @@ export interface GetEntriesByParams {
   "metadata.tags[exists]"?: boolean;
   "metadata.tags.sys.id[in]"?: string;
   "metadata.tags.sys.id[all]"?: string;
+  order?: string;
 }
 
 export default class Entries extends _BaseContentfulAPI {
@@ -67,12 +76,48 @@ export default class Entries extends _BaseContentfulAPI {
     contentType,
     hasAllTags,
     hasTags,
+    orderBy,
     ...inputParams
   }: _GetEntriesByParamsInput = {}): GetEntriesByParams {
     const resParams: GetEntriesByParams = inputParams;
 
     if (contentType) {
       resParams.content_type = contentType;
+    }
+
+    if (orderBy && !resParams.content_type) {
+      console.warn(
+        "Contentful cannot return ordered content without setting a content_type.",
+      );
+    } else if (orderBy) {
+      const orderParams: string[] = [];
+
+      const addParam = (param: string | EntryOrderQuerySpec): void => {
+        if (typeof param === "string") {
+          orderParams.push(param);
+        } else {
+          const isDesc = param.desc === true || param.asc === false;
+          orderParams.push(`${isDesc ? "-" : ""}${param.field}`);
+        }
+      };
+
+      if (Array.isArray(orderBy)) {
+        orderBy.forEach(addParam);
+      } else {
+        addParam(orderBy);
+      }
+
+      let orderParam: string | undefined;
+
+      if (orderParams.length > 1) {
+        orderParam = `(${orderParams.join(",")})`;
+      } else if (orderParams.length === 1) {
+        orderParam = orderParams[0];
+      }
+
+      if (orderParam) {
+        resParams.order = orderParam;
+      }
     }
 
     if (hasTags) {
