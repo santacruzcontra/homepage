@@ -23,6 +23,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.className} ${bebasNeue.variable}`}>
+      <head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
       <body className="min-h-dvh bg-gradient-to-b from-[#E5D4C3]  to-[#9B744A] text-stone-950 shadow-inner shadow-[#482919]">
         <Header />
         <main className="flex flex-col items-stretch justify-start">
