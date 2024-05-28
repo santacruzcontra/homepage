@@ -5,7 +5,7 @@ export function PageTitle({
 }: React.PropsWithChildren<React.HTMLProps<HTMLHeadingElement>>) {
   return (
     <h1
-      className={`${className ? className + " " : ""} font-title w-full text-center text-4xl min-[525px]:text-5xl sm:text-6xl desktop:text-7xl xl:text-8xl`}
+      className={`${className ? className + " " : ""} w-full text-center font-title text-4xl sm:text-6xl xl:text-8xl desktop:text-7xl [@media(min-width:525px)]:text-5xl`}
       {...props}
     >
       {children}
