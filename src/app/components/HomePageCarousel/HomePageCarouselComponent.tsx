@@ -62,15 +62,13 @@ export function HomePageCarouselComponent({
   }
 
   return (
-    <div className="flex w-full flex-col items-center p-4">
-      <Carousel
-        plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
-        className="max-w-[960px]"
-      >
-        <CarouselContent>
-          <>{imageArrayRes.items.map(getImage)}</>
-        </CarouselContent>
-      </Carousel>
-    </div>
+    <Carousel
+      plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+      className="max-w-[960px]"
+    >
+      <CarouselContent>
+        <>{imageArrayRes.items.map(getImage)}</>
+      </CarouselContent>
+    </Carousel>
   );
 }
