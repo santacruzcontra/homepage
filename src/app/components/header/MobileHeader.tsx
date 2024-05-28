@@ -61,7 +61,7 @@ function MobileHeaderNavItem({
   return (
     <HeaderNavItem
       activeClassStr={activeClassStr}
-      className="font-title smNotShort:py-5 smNotShort:pl-20 smNotShort:pr-10 smNotShort:text-3xl border-b-[1px] border-[#B3895D] border-opacity-50 py-3 pl-12 pr-6 text-right text-xl tracking-wide last:border-b-0 min-[500px]:py-4 min-[500px]:pl-16 min-[500px]:pr-8 min-[500px]:text-2xl "
+      className="border-b-[1px] border-[#B3895D] border-opacity-50 py-3 pl-12 pr-6 text-right font-title text-xl tracking-wide last:border-b-0 smNotShort:py-5 smNotShort:pl-20 smNotShort:pr-10 smNotShort:text-3xl"
       {...props}
     />
   );
