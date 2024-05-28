@@ -6,9 +6,6 @@ export default function HomePage() {
     <>
       <PageTitle>Santa Cruz Contra</PageTitle>
       <HomePageCarousel />
-      <div className="">
-        <p></p>
-      </div>
     </>
   );
 }
