@@ -1,15 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import React, { useCallback, useMemo } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
+  CarouselDots,
+  type CarouselApi,
 } from "~/components/ui/carousel";
 import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
-import Autoplay from "embla-carousel-autoplay";
+import { CarouselImage } from "./CarouselImage";
 
 type HomePageCarouselComponentProps = {
   imageArrayRes: Contentful.ArrayResponse<ContentfulCarouselImage.Entry>;
@@ -20,41 +21,33 @@ type AssetMap = Record<string, Contentful.Asset>;
 export function HomePageCarouselComponent({
   imageArrayRes,
 }: HomePageCarouselComponentProps) {
-  const assetsByID: AssetMap | undefined = useMemo(
-    () =>
-      imageArrayRes.includes?.Asset.reduce((res, asset) => {
-        res[asset.sys.id] = asset as Contentful.Asset;
-        return res;
-      }, {} as AssetMap),
+  const [api, setAPI] = useState<CarouselApi>();
+
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 6500, stopOnInteraction: false, playOnInit: false }),
+  );
+
+  const play = useCallback(() => {
+    (autoplayPlugin.current as { play: () => void }).play();
+  }, [autoplayPlugin]);
+
+  const assetsByID = useMemo(
+    () => mapAssetsToID(imageArrayRes.includes?.Asset),
     [imageArrayRes],
   );
 
-  const getImage = useCallback(
-    (
-      imageEntry: ContentfulCarouselImage.Entry,
-      imgIdx: number,
-    ): React.JSX.Element | null => {
-      const imgID = imageEntry.fields.image.sys.id;
+  useEffect(() => {
+    if (api) {
+      const onSelect = () => {
+        (autoplayPlugin.current as { reset: () => void }).reset();
+      };
 
-      // We can't render an image if we don't get one buddy
-      if (assetsByID?.[imgID] === undefined) {
-        return null;
-      }
-
-      return (
-        <CarouselItem key={imageEntry.sys.id} className="">
-          <Image
-            src={"https:" + assetsByID[imgID]!.fields.file.url}
-            alt={imageEntry.fields.imageDescription}
-            width={960}
-            height={540}
-            priority={imgIdx === 0}
-          />
-        </CarouselItem>
-      );
-    },
-    [assetsByID],
-  );
+      api.on("select", onSelect);
+      return () => {
+        api.off("select", onSelect);
+      };
+    }
+  }, [api]);
 
   // We can't render our carousel with no assets buddy
   if (assetsByID === undefined) {
@@ -63,12 +56,33 @@ export function HomePageCarouselComponent({
 
   return (
     <Carousel
-      plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+      plugins={[autoplayPlugin.current]}
       className="max-w-[960px]"
+      setApi={setAPI}
     >
       <CarouselContent>
-        <>{imageArrayRes.items.map(getImage)}</>
+        <>
+          {imageArrayRes.items.map((imageEntry, idx) => (
+            <CarouselImage
+              key={imageEntry.sys.id}
+              isFirst={idx === 0}
+              imageEntry={imageEntry}
+              imageAsset={assetsByID[imageEntry.fields.image.sys.id]}
+              play={play}
+            />
+          ))}
+        </>
       </CarouselContent>
+      <CarouselDots />
     </Carousel>
   );
+}
+
+function mapAssetsToID(assets?: Contentful.Resource[]): AssetMap | undefined {
+  if (assets === undefined) return undefined;
+
+  return assets.reduce((res, asset) => {
+    res[asset.sys.id] = asset as Contentful.Asset;
+    return res;
+  }, {} as AssetMap);
 }
