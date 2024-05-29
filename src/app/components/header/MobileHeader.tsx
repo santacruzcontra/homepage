@@ -44,7 +44,6 @@ function MobilePopoverNav() {
       >
         <nav className="flex flex-col items-stretch gap-0">
           <MobileHeaderNavItem href="/">Home</MobileHeaderNavItem>
-          <MobileHeaderNavItem href="/about">About</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/policies">Policies</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/contact">Contact</MobileHeaderNavItem>
           <MobileHeaderNavItem href="/events">Events</MobileHeaderNavItem>
