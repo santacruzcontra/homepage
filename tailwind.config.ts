@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+import { screens as defaultScreens } from "tailwindcss/defaultTheme";
+
+const { sm, md, lg, xl, "2xl": doubleXL } = defaultScreens;
 
 const config = {
   darkMode: ["class"],
@@ -15,6 +18,19 @@ const config = {
       screens: {
         "2xl": "1400px",
       },
+    },
+    screens: {
+      xs: "525px",
+      sm,
+      // This is added specifically to style the mobile nav menu on certain landscape phone screens
+      smNotShort: {
+        raw: "(min-width: 640px) and (min-height: 465px)",
+      },
+      md,
+      desktop: "800px",
+      lg,
+      xl,
+      "2xl": doubleXL,
     },
     extend: {
       colors: {
@@ -70,14 +86,6 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      screens: {
-        smd: "525px",
-        desktop: "800px",
-        // This is added specifically to style the mobile nav menu on certain landscape phone screens
-        smNotShort: {
-          raw: "(min-width: 640px) and (min-height: 465px)",
-        },
       },
       fontFamily: {
         title: ["var(--title-font)"],
