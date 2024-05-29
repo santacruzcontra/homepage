@@ -29,7 +29,7 @@ export function CarouselImage({
   // We can't render an image if we don't get one buddy
   if (!imageAsset) return null;
 
-  const whClasses = `w-[${CAROUSEL_IMG_WIDTH}px] h-[${CAROUSEL_IMG_HEIGHT}px]`;
+  const whClasses = `max-w-[${CAROUSEL_IMG_WIDTH}px] max-h-[${CAROUSEL_IMG_HEIGHT}px]`;
 
   return (
     <CarouselItem className={`relative ${whClasses}`}>
