@@ -8,12 +8,12 @@ export function DesktopHeader() {
       <nav className="-mx-4 grid grid-cols-[1fr_auto_1fr] items-center justify-center px-2 py-4 font-title text-xl tracking-wide [@media(min-width:850px)]:text-2xl">
         <BadgeRibbon left>
           <DesktopHeaderNavItem href="/">Home</DesktopHeaderNavItem>
-          <DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
+          <DesktopHeaderNavItem href="/events">Events</DesktopHeaderNavItem>
         </BadgeRibbon>
         <ContraLogo />
         <BadgeRibbon right>
+          <DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
           <DesktopHeaderNavItem href="/policies">Policies</DesktopHeaderNavItem>
-          <DesktopHeaderNavItem href="/events">Events</DesktopHeaderNavItem>
         </BadgeRibbon>
       </nav>
     </header>
