@@ -41,12 +41,12 @@ export function CarouselImage({
         priority={isFirst}
         onLoad={loadingComplete}
         onError={loadingComplete}
-        className={loading ? "invisible" : "visible"}
+        className={`rounded-lg ${loading ? "invisible" : "visible"}`}
       />
       <span
         className={`absolute top-0 ${whClasses} ${loading ? "block" : "hidden"}`}
       >
-        <Skeleton className={whClasses} />
+        <Skeleton className={`rounded-lg ${whClasses}`} />
       </span>
     </CarouselItem>
   );
