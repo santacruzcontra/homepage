@@ -38,13 +38,13 @@ export function HomePageCarouselComponent({
 
   useEffect(() => {
     if (api) {
-      const onSelect = () => {
+      const resetAutoplayTimer = () => {
         (autoplayPlugin.current as { reset: () => void }).reset();
       };
 
-      api.on("select", onSelect);
+      api.on("select", resetAutoplayTimer);
       return () => {
-        api.off("select", onSelect);
+        api.off("select", resetAutoplayTimer);
       };
     }
   }, [api]);
