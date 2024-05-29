@@ -72,6 +72,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       screens: {
+        smd: "525px",
         desktop: "800px",
         // This is added specifically to style the mobile nav menu on certain landscape phone screens
         smNotShort: {
