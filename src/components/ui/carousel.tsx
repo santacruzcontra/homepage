@@ -5,8 +5,6 @@ import useEmblaCarousel, {
 } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { cn } from "~/lib/utils";
-import { Button } from "~/components/ui/button";
 import {
   createContext,
   forwardRef,
@@ -15,6 +13,8 @@ import {
   useEffect,
   useState,
 } from "react";
+import { Button } from "~/components/ui/button";
+import { cn } from "~/lib/utils";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -47,6 +47,41 @@ function useCarousel() {
   }
 
   return context;
+}
+
+function useCarouselDots() {
+  const { api } = useCarousel();
+  const [selected, setSelected] = useState(0);
+  const [slides, setSlides] = useState<number[]>([]);
+
+  const onDotClick = useCallback(
+    (index: number) => {
+      if (api) api.scrollTo(index);
+    },
+    [api],
+  );
+
+  const onInit = useCallback((api: CarouselApi) => {
+    setSlides(api!.scrollSnapList());
+  }, []);
+
+  const onSelect = useCallback((api: CarouselApi) => {
+    setSelected(api!.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+
+    onInit(api);
+    onSelect(api);
+
+    api.on("reInit", onInit).on("reInit", onSelect).on("select", onSelect);
+    return () => {
+      api.off("reInit", onInit).off("reInit", onSelect).off("select", onSelect);
+    };
+  }, [api, onInit, onSelect]);
+
+  return { selected, slides, onDotClick };
 }
 
 const Carousel = forwardRef<
@@ -201,6 +236,25 @@ const CarouselItem = forwardRef<
 });
 CarouselItem.displayName = "CarouselItem";
 
+function CarouselDots() {
+  const { onDotClick, selected, slides } = useCarouselDots();
+
+  return (
+    <div>
+      {slides.map((_, i) => (
+        <button
+          type="button"
+          key={i}
+          onMouseDown={() => {
+            onDotClick(i);
+          }}
+          className={`h-2 w-2 ${i === selected ? "bg-black" : "bg-stone-500"}`}
+        />
+      ))}
+    </div>
+  );
+}
+
 const CarouselPrevious = forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
@@ -260,10 +314,11 @@ const CarouselNext = forwardRef<
 CarouselNext.displayName = "CarouselNext";
 
 export {
-  type CarouselApi,
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
 };
