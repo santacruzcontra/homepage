@@ -236,19 +236,28 @@ const CarouselItem = forwardRef<
 });
 CarouselItem.displayName = "CarouselItem";
 
-function CarouselDots() {
+function CarouselDots({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   const { onDotClick, selected, slides } = useCarouselDots();
 
   return (
-    <div>
+    <div
+      className={cn(className, "flex flex-row justify-center gap-0 p-0")}
+      {...props}
+    >
       {slides.map((_, i) => (
         <button
-          type="button"
           key={i}
+          type="button"
           onMouseDown={() => {
             onDotClick(i);
           }}
-          className={`h-2 w-2 ${i === selected ? "bg-black" : "bg-stone-500"}`}
+          className={cn(
+            className,
+            `relative h-6 w-6 appearance-none after:absolute after:left-2 after:top-2 after:block after:h-2.5 after:w-2.5 after:rounded-full after:border-2 after:border-[#482919] after:border-opacity-50 after:content-[''] ${i === selected ? "after:bg-[#482919]" : "after:bg-transparent"}`,
+          )}
         />
       ))}
     </div>
