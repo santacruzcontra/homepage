@@ -2,8 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { type z } from "zod";
 import { Button } from "~/components/ui/button";
 import {
   Form,
@@ -14,16 +14,14 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import { EmailFormSchema } from "~/lib/schemas";
+import { subscribeToMailer } from "../actions/subscribeToMailer";
 
-const subscribeFormSchema = z.object({
-  email: z.string().email("Must provide a valid email address."),
-});
-
-type FormInputs = z.infer<typeof subscribeFormSchema>;
+type FormInputs = z.infer<typeof EmailFormSchema>;
 
 export function SubscribeEmailForm() {
   const form = useForm<FormInputs>({
-    resolver: zodResolver(subscribeFormSchema),
+    resolver: zodResolver(EmailFormSchema),
     defaultValues: {
       email: "",
     },
