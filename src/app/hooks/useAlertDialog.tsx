@@ -27,6 +27,11 @@ export type AlertDialogOptions = {
   content?: AlertDialogContent;
 };
 
+export type OpenDialogWithContentParam = RequiredKeys<
+  AlertDialogContent,
+  "title" | "body"
+>;
+
 const DEFAULT_BUTTON_TEXT = "OK";
 const DEFAULT_BUTTON_VARIANT: ButtonVariants = "default";
 
@@ -44,7 +49,7 @@ export function useAlertDialog({
   });
 
   const openWithContent = useCallback(
-    (content: RequiredKeys<AlertDialogContent, "title" | "body">) => {
+    (content: OpenDialogWithContentParam) => {
       setContent({
         button: DEFAULT_BUTTON_TEXT,
         buttonVariant: DEFAULT_BUTTON_VARIANT,
