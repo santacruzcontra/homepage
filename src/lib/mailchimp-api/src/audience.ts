@@ -1,6 +1,13 @@
 import { env } from "~/env";
 import { _BaseMailchimpAPI } from "./_BaseMailchimpAPI";
-import { hashEmail, type MailchimpErrorRes } from "./helpers";
+import { type MailchimpErrorRes } from "./helpers";
+
+export type UserStatus =
+  | "pending"
+  | "cleaned"
+  | "subscribed"
+  | "unsubscribed"
+  | "transactional";
 
 type SubscribeSuccessRes = {
   /** Should be their subscriber hash */
@@ -9,7 +16,7 @@ type SubscribeSuccessRes = {
   unique_email_id: string;
   contact_id: string;
   full_name: string;
-  status: string;
+  status: UserStatus;
   /** ISO datetime */
   timestamp_signup: string;
   /** ISO datetime */
@@ -26,10 +33,13 @@ type SubscribeSuccessRes = {
  */
 export function subscribe(
   email: string,
-  subscriberHash = hashEmail(email),
+  // subscriberHash = hashEmail(email),
 ): Promise<SubscribeSuccessRes | MailchimpErrorRes> {
-  return _BaseMailchimpAPI._Put(
-    `/lists/${env.MAILCHIMP_API_AUDIENCE_ID}/members/${subscriberHash}`,
-    { email_address: email, status_if_new: "pending" },
+  return _BaseMailchimpAPI._Post(
+    `/lists/${env.MAILCHIMP_API_AUDIENCE_ID}/members`,
+    {
+      email_address: email,
+      status: "subscribed" satisfies UserStatus,
+    },
   );
 }
