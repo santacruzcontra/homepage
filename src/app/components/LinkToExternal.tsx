@@ -18,7 +18,7 @@ export function LinkToExternal({
       target={target}
       {...props}
     >
-      <span>{children}</span>
+      {typeof children === "string" ? <span>{children}</span> : children}
       {icon && <ExternalLink className="size-5" />}
     </Link>
   );
