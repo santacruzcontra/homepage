@@ -2,7 +2,7 @@
 
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
-import { forwardRef } from "react";
+import { forwardRef, useCallback, useState } from "react";
 
 import { cn } from "~/lib/utils";
 
@@ -108,6 +108,25 @@ const DialogDescription = forwardRef<
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
+function useDialogState(initialState = false) {
+  const [dialogIsOpen, setDialogOpen] = useState(initialState);
+
+  const openDialog = useCallback(() => {
+    setDialogOpen(true);
+  }, [setDialogOpen]);
+
+  const closeDialog = useCallback(() => {
+    setDialogOpen(false);
+  }, [setDialogOpen]);
+
+  return {
+    isOpen: dialogIsOpen,
+    open: openDialog,
+    close: closeDialog,
+    setOpen: setDialogOpen,
+  };
+}
+
 export {
   Dialog,
   DialogPortal,
@@ -119,4 +138,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  useDialogState,
 };
