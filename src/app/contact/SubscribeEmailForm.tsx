@@ -17,6 +17,8 @@ import { Input } from "~/components/ui/input";
 import { EmailFormSchema } from "~/lib/schemas";
 import { subscribeToMailer } from "../actions/subscribeToMailer";
 import { useAlertDialog } from "../hooks/useAlertDialog";
+import { LinkToExternal } from "../components/LinkToExternal";
+import { env } from "~/env";
 
 type FormInputs = z.infer<typeof EmailFormSchema>;
 
@@ -36,8 +38,8 @@ export function SubscribeEmailForm() {
 
       if (!res.ok) {
         openWithContent({
-          title: "Signup failed",
-          body: "We were unable to subscribe you to our mailing list.",
+          title: "Uh oh!",
+          body: <SubscribeFailErrorMessage />,
         });
         return;
       }
@@ -82,6 +84,32 @@ export function SubscribeEmailForm() {
         </form>
       </Form>
       {dialogNode}
+    </>
+  );
+}
+
+function SubscribeFailErrorMessage() {
+  return (
+    <>
+      We were unable to subscribe you to our mailing list.
+      <br />
+      <br />
+      If the problem continues, please reach out to one of our volunteers
+      through our{" "}
+      <LinkToExternal
+        href={env.NEXT_PUBLIC_SC_CONTRA_FACEBOOK_LINK}
+        icon={false}
+      >
+        Facebook group
+      </LinkToExternal>{" "}
+      or our{" "}
+      <LinkToExternal
+        href={env.NEXT_PUBLIC_GOOGLE_CONTACT_FORM_URL}
+        icon={false}
+      >
+        contact form
+      </LinkToExternal>
+      .
     </>
   );
 }
