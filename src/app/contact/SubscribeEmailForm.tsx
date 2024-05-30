@@ -19,20 +19,19 @@ const subscribeFormSchema = z.object({
   email: z.string().email("Must provide a valid email address."),
 });
 
+type FormInputs = z.infer<typeof subscribeFormSchema>;
+
 export function SubscribeEmailForm() {
-  const form = useForm<z.infer<typeof subscribeFormSchema>>({
+  const form = useForm<FormInputs>({
     resolver: zodResolver(subscribeFormSchema),
     defaultValues: {
       email: "",
     },
   });
 
-  const onSubmit = useCallback(
-    (values: z.infer<typeof subscribeFormSchema>) => {
-      console.log("TODO BUILD PROPER FORM HANDLING", values);
-    },
-    [],
-  );
+  const onSubmit = useCallback((values: FormInputs) => {
+    console.log("TODO BUILD PROPER FORM HANDLING", values);
+  }, []);
 
   return (
     <Form {...form}>
