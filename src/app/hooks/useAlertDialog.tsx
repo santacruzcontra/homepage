@@ -13,10 +13,13 @@ import {
 } from "~/components/ui/dialog";
 import { type RequiredKeys } from "~/utilTypes";
 
+type ButtonVariants = React.ComponentProps<typeof Button>["variant"];
+
 export type AlertDialogContent = {
   title?: React.ReactNode;
   body?: React.ReactNode;
   button?: React.ReactNode;
+  buttonVariant?: ButtonVariants;
 };
 
 export type AlertDialogOptions = {
@@ -25,6 +28,7 @@ export type AlertDialogOptions = {
 };
 
 const DEFAULT_BUTTON_TEXT = "OK";
+const DEFAULT_BUTTON_VARIANT: ButtonVariants = "default";
 
 export function useAlertDialog({
   isOpen,
@@ -36,11 +40,16 @@ export function useAlertDialog({
     title: _contentOnInit.title ?? "",
     body: _contentOnInit.body ?? "",
     button: _contentOnInit.button ?? DEFAULT_BUTTON_TEXT,
+    buttonVariant: _contentOnInit.buttonVariant ?? DEFAULT_BUTTON_VARIANT,
   });
 
   const openWithContent = useCallback(
     (content: RequiredKeys<AlertDialogContent, "title" | "body">) => {
-      setContent({ button: DEFAULT_BUTTON_TEXT, ...content });
+      setContent({
+        button: DEFAULT_BUTTON_TEXT,
+        buttonVariant: DEFAULT_BUTTON_VARIANT,
+        ...content,
+      });
       dialog.open();
     },
     [setContent, dialog],
@@ -56,7 +65,11 @@ export function useAlertDialog({
             <DialogDescription>{content.body}</DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button type="button" onClick={dialog.close}>
+            <Button
+              type="button"
+              onClick={dialog.close}
+              variant={content.buttonVariant}
+            >
               {content.button}
             </Button>
           </DialogFooter>
@@ -64,7 +77,7 @@ export function useAlertDialog({
       </DialogPortal>
     </Dialog>,
     openWithContent,
-    setContent,
     dialog,
+    setContent,
   ] as const;
 }
