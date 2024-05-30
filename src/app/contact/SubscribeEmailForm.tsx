@@ -27,9 +27,22 @@ export function SubscribeEmailForm() {
     },
   });
 
-  const onSubmit = useCallback((values: FormInputs) => {
-    console.log("TODO BUILD PROPER FORM HANDLING", values);
-  }, []);
+  const onSubmit: SubmitHandler<FormInputs> = useCallback(
+    async (values) => {
+      const res = await subscribeToMailer(values.email);
+
+      if (!res.ok) {
+        // TODO some error handling
+        return;
+      }
+
+      form.reset();
+
+      // TODO success message?
+      alert("YOU DONE IT PARTNER");
+    },
+    [form],
+  );
 
   return (
     <Form {...form}>
