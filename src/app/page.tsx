@@ -1,5 +1,4 @@
-import { Clock, ExternalLink, MapPin } from "lucide-react";
-import Link from "next/link";
+import { Clock, MapPin } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -15,8 +14,8 @@ import {
 } from "~/components/ui/card";
 import { Separator } from "~/components/ui/separator";
 import { env } from "~/env";
-import { cn } from "~/lib/utils";
 import { HomePageCarousel } from "./components/HomePageCarousel/HomePageCarousel";
+import { LinkToExternal } from "./components/LinkToExternal";
 import { PageTitle } from "./components/PageTitle";
 
 export const dynamic = "force-dynamic";
@@ -213,27 +212,5 @@ export default function HomePage() {
       </section>
       <section className="m-auto w-full max-w-4xl p-4"></section>
     </>
-  );
-}
-
-function LinkToExternal({
-  className,
-  children,
-  icon = true,
-  target = "_blank",
-  ...props
-}: React.ComponentProps<typeof Link> & { icon?: boolean }) {
-  return (
-    <Link
-      className={cn(
-        className,
-        "inline-flex flex-row items-center gap-2 text-[#482919] underline hover:text-opacity-80",
-      )}
-      target={target}
-      {...props}
-    >
-      <span>{children}</span>
-      {icon && <ExternalLink className="size-5" />}
-    </Link>
   );
 }
