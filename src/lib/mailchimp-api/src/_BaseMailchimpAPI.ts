@@ -1,8 +1,8 @@
 import { env } from "~/env";
-import { API } from "../base-api/src/API";
-import { type APIFetchOptions } from "../base-api/src/API.types";
+import { API } from "~/lib/base-api/src/API";
+import { type APIFetchOptions } from "~/lib/base-api/src/API.types";
 
-export default class MailchimpAPI extends API {
+export class _BaseMailchimpAPI extends API {
   protected static BASE_URL = env.MAILCHIMP_API_BASE_URL;
 
   public static _Fetch<
