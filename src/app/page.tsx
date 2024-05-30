@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { Clock, ExternalLink, MapPin } from "lucide-react";
 import Link from "next/link";
 import {
   Accordion,
@@ -6,7 +6,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 import { Separator } from "~/components/ui/separator";
 import { env } from "~/env";
 import { cn } from "~/lib/utils";
@@ -32,18 +38,19 @@ export default function HomePage() {
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
             <p>
-              Contra Dance is a traditional New England style of folk dancing,
-              in which each dance is taught and prompted by a caller, using
-              gender neutral role terms (Larks / Robins).
+              Contra Dance is a traditional social dancing event with origins in
+              New England and Appalachia. Each dance is taught beforehand and
+              prompted by a caller using gender neutral terms (Larks / Robins).
             </p>
             <p className="font-bold">
               No dancing experience or dance partner is necessary!
             </p>
             <Separator />
             <p>
-              It&apos;s beginner-friendly and easy to learn - just follow the
-              instructions! We offer an optional Beginner&apos;s Workshop 30
-              minutes before each&nbsp;dance.
+              It&apos;s <em>beginner-friendly</em> and easy to learn - just
+              follow the instructions! We offer an optional
+              &ldquo;Beginner&apos;s Workshop&rdquo; 30 minutes before
+              each&nbsp;dance.
             </p>
             <p>
               Our dances <span className="underline">always</span> feature live
@@ -51,6 +58,34 @@ export default function HomePage() {
               is a break midway with plenty of time to socialize and meet
               new&nbsp;folks.
             </p>
+          </CardContent>
+        </Card>
+        <Card className="m-auto max-w-sm">
+          <CardHeader className="pb-2">
+            <CardTitle>Sound like fun?</CardTitle>
+            <CardTitle className="text-lg font-medium">Join us!</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <p>We meet the 4th Friday of every month at the Live Oak Grange.</p>
+            <LinkToExternal
+              href="https://www.google.com/maps/search/?api=1&query=live+oak+grange+santa+cruz+ca"
+              icon={false}
+            >
+              <p className="flex flex-row items-center gap-2">
+                <MapPin />
+                <span>1900 17th Ave, Santa Cruz CA</span>
+              </p>
+            </LinkToExternal>
+            <p className="flex flex-row items-center gap-2">
+              <Clock className="mx-0.5 size-5" />
+              <span>7:00pm - 10:00pm</span>
+            </p>
+            <Separator />
+            <CardDescription>Additional Info</CardDescription>
+            <CardDescription>
+              6:30pm - Newcomer&apos;s introduction
+            </CardDescription>
+            <CardDescription>5:30pm - Monthly potluck</CardDescription>
           </CardContent>
         </Card>
         <Card>
