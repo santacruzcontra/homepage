@@ -16,6 +16,7 @@ export async function subscribeToMailer(email: string) {
   if (!result.success) {
     return {
       ok: false,
+      status: 400,
       errors: result.error.flatten().formErrors,
     };
   }
@@ -34,6 +35,7 @@ export async function subscribeToMailer(email: string) {
     // TODO error handling, maybe something with title/detail?
     return {
       ok: false,
+      status: 404,
       errors: ["Unable to subscribe you to our email list.", subRes.detail],
     };
   }
@@ -59,7 +61,7 @@ export async function subscribeToMailer(email: string) {
       // API lib - the body is empty, response.json() errors out. Do nothing!
     } else if (Mailchimp.isErrorRes(err)) {
       // Handle mailchimp errors
-      return { ok: false, errors: [err.detail] };
+      return { ok: false, status: 404, errors: [err.detail] };
     } else {
       // Unhandled exception
       console.warn("Unhandled Exception in subscribeToMailer()");
@@ -68,5 +70,5 @@ export async function subscribeToMailer(email: string) {
   }
 
   // At the end, if everything works we're good!
-  return { ok: true };
+  return { ok: true, status: 201 };
 }
