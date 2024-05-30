@@ -26,6 +26,8 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_GOOGLE_CONTACT_FORM_URL: z.string().url(),
+    NEXT_PUBLIC_SC_CONTRA_FACEBOOK_LINK: z.string().url(),
   },
 
   /**
@@ -33,6 +35,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
+    // Server
     NODE_ENV: process.env.NODE_ENV,
     MAILCHIMP_API_BASE_URL: process.env.MAILCHIMP_API_BASE_URL,
     MAILCHIMP_API_ACCESS_TOKEN: process.env.MAILCHIMP_API_ACCESS_TOKEN,
@@ -43,7 +46,12 @@ export const env = createEnv({
     CONTENTFUL_API_SPACE_ID: process.env.CONTENTFUL_API_SPACE_ID,
     CONTENTFUL_API_ENVIRONMENT: process.env.CONTENTFUL_API_ENVIRONMENT,
     CONTENTFUL_API_ACCESS_TOKEN: process.env.CONTENTFUL_API_ACCESS_TOKEN,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+
+    // Client
+    NEXT_PUBLIC_GOOGLE_CONTACT_FORM_URL:
+      process.env.NEXT_PUBLIC_GOOGLE_CONTACT_FORM_URL,
+    NEXT_PUBLIC_SC_CONTRA_FACEBOOK_LINK:
+      process.env.NEXT_PUBLIC_SC_CONTRA_FACEBOOK_LINK,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
