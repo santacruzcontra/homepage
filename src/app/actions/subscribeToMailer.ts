@@ -3,6 +3,11 @@
 import { Mailchimp } from "~/lib/mailchimp-api";
 import { EmailFormSchema } from "~/lib/schemas";
 
+/**
+ * Subscribe the user with the given email address to the configured
+ * Mailchimp "audience" (mailing list), then add a tag to their account
+ * indicating that they joined from the website.
+ */
 export async function subscribeToMailer(email: string) {
   // Validate using our schema
   const result = EmailFormSchema.safeParse({ email });
@@ -50,13 +55,14 @@ export async function subscribeToMailer(email: string) {
       err instanceof Error &&
       err.message.includes("Unexpected end of JSON input")
     ) {
-      // Handle this annoying fake error that happens because of my shoddy old API lib - the body is empty, response.json() errors out
+      // Handle this annoying fake error that happens because of my shoddy old
+      // API lib - the body is empty, response.json() errors out. Do nothing!
     } else if (Mailchimp.isErrorRes(err)) {
       // Handle mailchimp errors
       return { ok: false, errors: [err.detail] };
     } else {
-      // I guess this would be an unhandled exception, unlikely
-      console.warn("Unexpected Error found");
+      // Unhandled exception
+      console.warn("Unhandled Exception in subscribeToMailer()");
       console.error(err);
     }
   }
