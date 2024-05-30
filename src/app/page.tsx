@@ -31,8 +31,8 @@ export default function HomePage() {
       <div className="flex w-full flex-col items-center p-4 pb-0">
         <HomePageCarousel />
       </div>
-      <section className="m-auto flex w-full max-w-2xl flex-col gap-4 p-4">
-        <Card>
+      <section className="m-auto flex w-full flex-row flex-wrap items-start justify-center gap-4 p-4">
+        <Card className="max-w-2xl">
           <CardHeader>
             <CardTitle>What is Contra Dance?</CardTitle>
           </CardHeader>
@@ -60,7 +60,7 @@ export default function HomePage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="m-auto max-w-sm">
+        <Card className="max-w-sm">
           <CardHeader className="pb-2">
             <CardTitle>Sound like fun?</CardTitle>
             <CardTitle className="text-lg font-medium">Join us!</CardTitle>
@@ -81,14 +81,16 @@ export default function HomePage() {
               <span>7:00pm - 10:00pm</span>
             </p>
             <Separator />
-            <CardDescription>Additional Info</CardDescription>
+            <CardDescription>Before the event...</CardDescription>
+            <CardDescription>
+              5:30pm - Potluck, bring a dish to share!
+            </CardDescription>
             <CardDescription>
               6:30pm - Newcomer&apos;s introduction
             </CardDescription>
-            <CardDescription>5:30pm - Monthly potluck</CardDescription>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>Common Questions</CardTitle>
           </CardHeader>
