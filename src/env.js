@@ -10,8 +10,9 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     GOOGLE_CONTACT_FORM_URL: z.string().url(),
     SC_CONTRA_FACEBOOK_LINK: z.string().url(),
-    MAILCHIMP_API_KEY: z.string(),
-    MAILCHIMP_AUDIENCE_ID: z.string(),
+    MAILCHIMP_API_BASE_URL: z.string().url(),
+    MAILCHIMP_API_ACCESS_TOKEN: z.string(),
+    MAILCHIMP_API_AUDIENCE_ID: z.string(),
     CONTENTFUL_API_BASE_URL: z.string().url(),
     CONTENTFUL_API_SPACE_ID: z.string(),
     CONTENTFUL_API_ENVIRONMENT: z.string(),
@@ -33,8 +34,9 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
-    MAILCHIMP_AUDIENCE_ID: process.env.MAILCHIMP_AUDIENCE_ID,
+    MAILCHIMP_API_BASE_URL: process.env.MAILCHIMP_API_BASE_URL,
+    MAILCHIMP_API_ACCESS_TOKEN: process.env.MAILCHIMP_API_ACCESS_TOKEN,
+    MAILCHIMP_API_AUDIENCE_ID: process.env.MAILCHIMP_API_AUDIENCE_ID,
     GOOGLE_CONTACT_FORM_URL: process.env.GOOGLE_CONTACT_FORM_URL,
     SC_CONTRA_FACEBOOK_LINK: process.env.SC_CONTRA_FACEBOOK_LINK,
     CONTENTFUL_API_BASE_URL: process.env.CONTENTFUL_API_BASE_URL,
