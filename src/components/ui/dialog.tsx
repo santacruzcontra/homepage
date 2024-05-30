@@ -108,7 +108,14 @@ const DialogDescription = forwardRef<
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
-function useDialogState(initialState = false) {
+type UseDialogStateReturn = {
+  isOpen: boolean;
+  open: () => void;
+  close: () => void;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function useDialogState(initialState = false): UseDialogStateReturn {
   const [dialogIsOpen, setDialogOpen] = useState(initialState);
 
   const openDialog = useCallback(() => {
@@ -129,14 +136,15 @@ function useDialogState(initialState = false) {
 
 export {
   Dialog,
-  DialogPortal,
-  DialogOverlay,
   DialogClose,
-  DialogTrigger,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
   useDialogState,
+  type UseDialogStateReturn,
 };
