@@ -11,6 +11,7 @@ import {
   DialogTitle,
   useDialogState,
 } from "~/components/ui/dialog";
+import { type RequiredKeys } from "~/utilTypes";
 
 export type AlertDialogContent = {
   title?: React.ReactNode;
@@ -23,6 +24,8 @@ export type AlertDialogOptions = {
   content?: AlertDialogContent;
 };
 
+const DEFAULT_BUTTON_TEXT = "OK";
+
 export function useAlertDialog({
   isOpen,
   content: _contentOnInit = {},
@@ -32,12 +35,12 @@ export function useAlertDialog({
   const [content, setContent] = useState<AlertDialogContent>({
     title: _contentOnInit.title ?? "",
     body: _contentOnInit.body ?? "",
-    button: _contentOnInit.button ?? "OK",
+    button: _contentOnInit.button ?? DEFAULT_BUTTON_TEXT,
   });
 
   const openWithContent = useCallback(
-    (content: AlertDialogContent) => {
-      setContent(content);
+    (content: RequiredKeys<AlertDialogContent, "title" | "body">) => {
+      setContent({ button: DEFAULT_BUTTON_TEXT, ...content });
       dialog.open();
     },
     [setContent, dialog],
