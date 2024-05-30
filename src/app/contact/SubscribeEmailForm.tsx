@@ -30,27 +30,46 @@ export function SubscribeEmailForm() {
     },
   });
 
-  const [dialogNode, openWithContent] = useAlertDialog();
+  const [dialogNode, openWithContent, dialog] = useAlertDialog();
 
   const onSubmit: SubmitHandler<FormInputs> = useCallback(
     async (values) => {
       const res = await subscribeToMailer(values.email);
 
-      if (!res.ok) {
+      if (!res.ok && res.status === 409) {
         openWithContent({
-          title: "Uh oh!",
-          body: <SubscribeFailErrorMessage />,
+          title: "Hello again!",
+          body: <AlreadySubbedErrorMessage />,
         });
+        form.reset();
         return;
       }
 
+      if (!res.ok && res.status === 403) {
+        openWithContent({
+          title: "Hello again!",
+          body: <ManualResubscribe closeDialog={dialog.close} />,
+          button: "Nevermind",
+          buttonVariant: "outline",
+        });
+        form.reset();
+        return;
+      }
+
+      if (!res.ok) {
+        return openWithContent({
+          title: "Uh oh!",
+          body: <SubscribeFailErrorMessage />,
+        });
+      }
+
       openWithContent({
-        title: "Signup success!",
-        body: "You were successfully added to our mailing list.",
+        title: "Success!",
+        body: "You have been added to our mailing list.",
       });
       form.reset();
     },
-    [form, openWithContent],
+    [form, openWithContent, dialog],
   );
 
   return (
@@ -88,14 +107,55 @@ export function SubscribeEmailForm() {
   );
 }
 
+function AlreadySubbedErrorMessage() {
+  return (
+    <>
+      Looks like you&apos;re already subscribed.
+      <br />
+      <br />
+      If you believe this is incorrect, <PleaseReachOut />.
+    </>
+  );
+}
+
 function SubscribeFailErrorMessage() {
   return (
     <>
       We were unable to subscribe you to our mailing list.
       <br />
       <br />
-      If the problem continues, please reach out to one of our volunteers
-      through our{" "}
+      If the problem continues, <PleaseReachOut />.
+    </>
+  );
+}
+
+function ManualResubscribe({ closeDialog }: { closeDialog: () => void }) {
+  return (
+    <>
+      Looks like you were previously unsubscribed from our mailing list.
+      <br />
+      <br />
+      In order to protect your privacy, you must sign up through our official
+      form if you wish to re-subscribe.
+      <br />
+      <br />
+      <LinkToExternal
+        href={env.NEXT_PUBLIC_MAILCHIMP_SIGNUP_FORM_URL}
+        icon={false}
+        className="w-full"
+      >
+        <Button className="w-full" onClick={closeDialog}>
+          Open signup form
+        </Button>
+      </LinkToExternal>
+    </>
+  );
+}
+
+function PleaseReachOut() {
+  return (
+    <>
+      please reach out to one of our volunteers through our{" "}
       <LinkToExternal
         href={env.NEXT_PUBLIC_SC_CONTRA_FACEBOOK_LINK}
         icon={false}
@@ -109,7 +169,6 @@ function SubscribeFailErrorMessage() {
       >
         contact form
       </LinkToExternal>
-      .
     </>
   );
 }

@@ -21,22 +21,35 @@ export async function subscribeToMailer(email: string) {
     };
   }
 
-  // Generate a subscriber hash for the user
-  const subscriberHash = Mailchimp.hashEmail(result.data.email);
-
   // Subscribe the user to our mailing list
-  const subRes = await Mailchimp.audience.subscribe(
-    result.data.email,
-    subscriberHash,
-  );
+  const subRes = await Mailchimp.audience.subscribe(result.data.email);
 
   // Make sure we were successful
   if (Mailchimp.isErrorRes(subRes)) {
+    if (subRes.title === "Member Exists") {
+      return {
+        ok: false,
+        status: 409,
+        errors: ["You are already subscribed to our mailing list."],
+      };
+    }
+
+    if (subRes.title === "Forgotten Email Not Subscribed") {
+      return {
+        ok: false,
+        status: 403,
+        errors: ["You must resubscribe manually."],
+      };
+    }
+
     // TODO error handling, maybe something with title/detail?
     return {
       ok: false,
       status: 404,
-      errors: ["Unable to subscribe you to our email list.", subRes.detail],
+      errors: [
+        "We were unable to subscribe you to our mailing list.",
+        subRes.detail,
+      ],
     };
   }
 
