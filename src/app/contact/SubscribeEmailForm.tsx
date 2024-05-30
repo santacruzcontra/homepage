@@ -16,6 +16,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { EmailFormSchema } from "~/lib/schemas";
 import { subscribeToMailer } from "../actions/subscribeToMailer";
+import { useAlertDialog } from "../hooks/useAlertDialog";
 
 type FormInputs = z.infer<typeof EmailFormSchema>;
 
@@ -27,51 +28,60 @@ export function SubscribeEmailForm() {
     },
   });
 
+  const [dialogNode, openWithContent] = useAlertDialog();
+
   const onSubmit: SubmitHandler<FormInputs> = useCallback(
     async (values) => {
       const res = await subscribeToMailer(values.email);
 
       if (!res.ok) {
-        // TODO some error handling
+        openWithContent({
+          title: "Signup failed",
+          body: "We were unable to subscribe you to our mailing list.",
+        });
         return;
       }
 
+      openWithContent({
+        title: "Signup success!",
+        body: "You were successfully added to our mailing list.",
+      });
       form.reset();
-
-      // TODO success message?
-      alert("YOU DONE IT PARTNER");
     },
-    [form],
+    [form, openWithContent],
   );
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex max-w-sm flex-col items-stretch gap-4"
-      >
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Enter email address</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Enter email here..."
-                  type="email"
-                  autoCapitalize="false"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button variant="default" type="submit">
-          Subscribe
-        </Button>
-      </form>
-    </Form>
+    <>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex max-w-sm flex-col items-stretch gap-4"
+        >
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Enter email address</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter email here..."
+                    type="email"
+                    autoCapitalize="false"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button variant="default" type="submit">
+            Subscribe
+          </Button>
+        </form>
+      </Form>
+      {dialogNode}
+    </>
   );
 }
