@@ -43,7 +43,7 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-dvh bg-gradient-to-b from-[#E5D4C3]  to-[#9B744A] pb-8 text-stone-950 shadow-inner shadow-[#482919]">
+      <body className="min-h-dvh bg-gradient-to-b from-[#E5D4C3]  to-[#9B744A] pb-8 text-stone-950">
         <Header />
         <main className="flex flex-col items-stretch justify-start">
           <div className="container flex flex-col items-start justify-start">
