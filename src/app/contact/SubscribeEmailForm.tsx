@@ -1,7 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCallback } from "react";
+import { Loader2Icon } from "lucide-react";
+import { useCallback, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { type z } from "zod";
 import { Button } from "~/components/ui/button";
@@ -14,11 +15,11 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import { env } from "~/env";
 import { EmailFormSchema } from "~/lib/schemas";
 import { subscribeToMailer } from "../actions/subscribeToMailer";
-import { useAlertDialog } from "../hooks/useAlertDialog";
 import { LinkToExternal } from "../components/LinkToExternal";
-import { env } from "~/env";
+import { useAlertDialog } from "../hooks/useAlertDialog";
 
 type FormInputs = z.infer<typeof EmailFormSchema>;
 
@@ -31,43 +32,56 @@ export function SubscribeEmailForm() {
   });
 
   const [dialogNode, openWithContent, dialog] = useAlertDialog();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit: SubmitHandler<FormInputs> = useCallback(
     async (values) => {
-      const res = await subscribeToMailer(values.email);
+      try {
+        setLoading(true);
 
-      if (!res.ok && res.status === 409) {
+        // Call our Server Action (this runs a network request)
+        const res = await subscribeToMailer(values.email);
+
+        if (res.ok) {
+          // Success!
+          openWithContent({
+            title: "Success!",
+            body: "You have been added to our mailing list.",
+          });
+        } else {
+          // Status-based error handling
+          switch (res.status) {
+            case 409:
+              openWithContent({
+                title: "Hello again!",
+                body: <AlreadySubbedErrorMessage />,
+              });
+              break;
+
+            case 403:
+              openWithContent({
+                title: "Hello again!",
+                body: <ManualResubscribe closeDialog={dialog.close} />,
+                button: "Nevermind",
+                buttonVariant: "outline",
+              });
+              break;
+
+            default:
+              // Unhandled exception, break out to catch block
+              throw new Error();
+          }
+        }
+      } catch (err) {
+        // Unhandled exception
         openWithContent({
-          title: "Hello again!",
-          body: <AlreadySubbedErrorMessage />,
-        });
-        form.reset();
-        return;
-      }
-
-      if (!res.ok && res.status === 403) {
-        openWithContent({
-          title: "Hello again!",
-          body: <ManualResubscribe closeDialog={dialog.close} />,
-          button: "Nevermind",
-          buttonVariant: "outline",
-        });
-        form.reset();
-        return;
-      }
-
-      if (!res.ok) {
-        return openWithContent({
           title: "Uh oh!",
           body: <SubscribeFailErrorMessage />,
         });
+      } finally {
+        setLoading(false);
+        form.reset();
       }
-
-      openWithContent({
-        title: "Success!",
-        body: "You have been added to our mailing list.",
-      });
-      form.reset();
     },
     [form, openWithContent, dialog],
   );
@@ -97,8 +111,16 @@ export function SubscribeEmailForm() {
               </FormItem>
             )}
           />
-          <Button variant="default" type="submit">
+          <Button variant="default" type="submit" disabled={loading}>
             Subscribe
+            {loading ? (
+              <>
+                &nbsp;
+                <Loader2Icon className="animate-spin" />
+              </>
+            ) : (
+              ""
+            )}
           </Button>
         </form>
       </Form>
