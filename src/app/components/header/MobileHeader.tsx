@@ -15,9 +15,9 @@ export function MobileHeader() {
       <MobilePopoverNav />
       <div className="flex flex-col items-center gap-2 px-2 py-4">
         <div className="grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center">
-          <BadgeRibbon left />
+          <BadgeRibbon />
           <ContraLogo height={128} />
-          <BadgeRibbon right />
+          <BadgeRibbon />
         </div>
       </div>
     </header>
@@ -60,7 +60,7 @@ function MobileHeaderNavItem({
   return (
     <HeaderNavItem
       activeClassStr={activeClassStr}
-      className="border-b-[1px] border-[#B3895D] border-opacity-50 py-3 pl-12 pr-6 text-right font-title text-xl tracking-wide last:border-b-0 smNotShort:py-5 smNotShort:pl-20 smNotShort:pr-10 smNotShort:text-3xl"
+      className="border-b-[1px] border-[#B3895D] border-opacity-50 py-3 pl-12 pr-6 text-right font-title text-xl font-medium last:border-b-0 smNotShort:py-5 smNotShort:pl-20 smNotShort:pr-10 smNotShort:text-3xl"
       {...props}
     />
   );
