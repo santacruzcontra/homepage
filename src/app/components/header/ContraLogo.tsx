@@ -11,7 +11,7 @@ export function ContraLogo({
   ...props
 }: OptionalKeys<ImageProps, "src" | "alt">) {
   return (
-    <Link href="/" className="rounded-full">
+    <Link href="/" className="-mx-4 rounded-full">
       <Image
         priority
         src={src}
