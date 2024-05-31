@@ -1,10 +1,9 @@
+import { Montserrat, Open_Sans } from "next/font/google";
 import "~/styles/globals.css";
 import { Header } from "./components/header/Header";
-import { Bebas_Neue, Montserrat } from "next/font/google";
 
-const bebasNeue = Bebas_Neue({
+const bebasNeue = Open_Sans({
   subsets: ["latin"],
-  weight: "400",
   variable: "--title-font",
 });
 const montserrat = Montserrat({ subsets: ["latin"] });
