@@ -12,6 +12,9 @@ const config = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [{ hostname: "images.ctfassets.net" }],
+  },
 };
 
 export default config;
