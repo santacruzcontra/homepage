@@ -64,7 +64,7 @@ export default function HomePage() {
                   icon={false}
               >
                 <p className="flex flex-row items-center gap-2">
-                  <MapPin/>
+                  <MapPin className="text-black" />
                   <span>1900 17th Ave, Santa Cruz CA</span>
                 </p>
               </LinkToExternal>

@@ -13,7 +13,7 @@ export function LinkToExternal({
     <Link
       className={cn(
         className,
-        "inline-flex flex-row items-center gap-2 text-[#482919] underline hover:text-opacity-80",
+        "inline-flex flex-row items-center gap-2 text-[#bf490e] underline hover:text-opacity-80",
       )}
       target={target}
       {...props}
