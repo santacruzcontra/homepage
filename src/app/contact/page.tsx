@@ -19,37 +19,37 @@ export default function ContactPage() {
 
 function FormLinkCard() {
   return (
-      <div className="flex flex-col items-stretch justify-between">
-          <div className="flex flex-col items-stretch gap-4">
-              <h2 className="font-title italic text-3xl">Message our volunteers</h2>
-              <p>
-                  Send us a message if you&apos;d like to sponsor a dance, volunteer, or
-                  offer up a suggestion.
-              </p>
-              <p>
-                  The following button will open a form where you can easily send us an
-                  email. Our volunteers will respond as soon as they can!
-              </p>
+      <div className="flex flex-col items-stretch gap-4">
+          <h2 className="font-title italic text-3xl">Message our volunteers</h2>
+          <p>
+              Send us a message if you&apos;d like to sponsor a dance, volunteer, or
+              offer up a suggestion.
+          </p>
+          <p>
+              The following button will open a form where you can easily send us an
+              email. Our volunteers will respond as soon as they can!
+          </p>
+          <div className="flex-grow flex flex-col justify-end">
+              <Link href={env.GOOGLE_CONTACT_FORM_URL} target="_blank">
+                  <Button className="w-full h-12 text-base">
+                      Send message&nbsp;&nbsp;&nbsp;
+                      <ExternalLinkIcon />
+                  </Button>
+              </Link>
           </div>
-          <Link href={env.GOOGLE_CONTACT_FORM_URL} target="_blank">
-              <Button className="w-full h-12 text-base">
-                  Send message&nbsp;&nbsp;&nbsp;
-                  <ExternalLinkIcon />
-              </Button>
-          </Link>
       </div>
   );
 }
 
 function SubscribeNewsletterCard() {
     return (
-        <div className="flex flex-col items-stretch justify-between">
-            <div className="flex flex-col items-stretch gap-4">
-                <h2 className="font-title italic text-3xl">Get the newsletter</h2>
-                <p>
-                    Enter your email to subscribe to our monthly newsletter and hear about
-                    upcoming events.
-                </p>
+        <div className="flex flex-col items-stretch justify-between gap-4">
+            <h2 className="font-title italic text-3xl">Get the newsletter</h2>
+            <p>
+                Enter your email to subscribe to our monthly newsletter and hear about
+                upcoming events.
+            </p>
+            <div className="flex-grow flex flex-col justify-end">
                 <SubscribeEmailForm/>
             </div>
         </div>
