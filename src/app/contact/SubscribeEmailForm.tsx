@@ -104,6 +104,7 @@ export function SubscribeEmailForm() {
                     placeholder="Enter email here..."
                     type="email"
                     autoCapitalize="false"
+                    className="h-12 text-base"
                     {...field}
                   />
                 </FormControl>
@@ -111,7 +112,7 @@ export function SubscribeEmailForm() {
               </FormItem>
             )}
           />
-          <Button variant="default" type="submit" disabled={loading}>
+          <Button variant="default" type="submit" disabled={loading} className="h-12 text-base">
             Subscribe
             {loading ? (
               <>
