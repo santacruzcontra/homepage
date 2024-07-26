@@ -48,7 +48,7 @@ export default function RootLayout({
         <main className="flex flex-col items-stretch justify-start p-4">
           <div className="container flex flex-col items-start justify-start max-w-[800px] min-w-[800px] gap-4">
             <Header />
-            <div className="flex flex-col items-stretch gap-4">
+            <div className="flex flex-col items-stretch gap-4 w-full">
               {children}
             </div>
           </div>
