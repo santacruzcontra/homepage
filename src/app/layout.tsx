@@ -1,6 +1,7 @@
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "~/styles/globals.css";
 import { Header } from "./components/header/Header";
+import { Footer } from "~/app/components/footer/Footer";
 
 const dmSerifDisplay = DM_Serif_Display({
   weight: ['400'],
@@ -51,6 +52,7 @@ export default function RootLayout({
             <div className="flex flex-col items-stretch gap-4 w-full">
               {children}
             </div>
+            <Footer />
           </div>
         </main>
       </body>
