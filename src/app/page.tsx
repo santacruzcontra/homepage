@@ -25,18 +25,16 @@ export default function HomePage() {
       <div className="flex w-full flex-col items-center">
         <HomePageCarousel />
       </div>
-      <section className="m-auto flex w-full flex-row flex-wrap items-start justify-center gap-4 p-4">
-        <Card className="max-w-2xl">
-          <CardHeader>
-            <CardTitle>What is Contra Dance?</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-3">
+      <section className="flex flex-row items-stretch gap-4">
+        <div className="max-w-[500px] flex flex-col gap-2">
+          <h2 className="font-title text-3xl italic">What is Contra Dance?</h2>
+          <div className="flex flex-col items-stretch gap-4 text-base">
             <p>
               Contra Dance is a traditional social dancing event with origins in
               New England and Appalachia. Each dance is taught beforehand and
               prompted by a caller using gender neutral terms (Larks / Robins).
             </p>
-            <p className="font-bold">
+            <p className="font-semibold">
               No dancing experience or dance partner is necessary!
             </p>
             <Separator />
@@ -52,38 +50,40 @@ export default function HomePage() {
               is a break midway with plenty of time to socialize and meet
               new&nbsp;folks.
             </p>
-          </CardContent>
-        </Card>
-        <Card className="max-w-sm">
-          <CardHeader className="pb-2">
-            <CardTitle>Sound like fun?</CardTitle>
-            <CardTitle className="text-lg font-medium">Join us!</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-2">
-            <p>We meet the 4th Friday of every month at the Live Oak Grange.</p>
-            <LinkToExternal
-              href="https://www.google.com/maps/search/?api=1&query=live+oak+grange+santa+cruz+ca"
-              icon={false}
-            >
+          </div>
+        </div>
+        <Separator orientation="vertical" className="h-auto" />
+        <div className="flex flex-col gap-2">
+          <h2 className="font-title text-3xl italic">Sound like fun?</h2>
+          <div className="flex flex-col items-stretch gap-4">
+            <div className="flex flex-col items-stretch gap-2 text-base">
+              <p className="text-lg font-semibold">Join us!</p>
+              <p>We meet the 4th Friday of every month at the Live Oak Grange.</p>
+              <LinkToExternal
+                  href="https://www.google.com/maps/search/?api=1&query=live+oak+grange+santa+cruz+ca"
+                  icon={false}
+              >
+                <p className="flex flex-row items-center gap-2">
+                  <MapPin/>
+                  <span>1900 17th Ave, Santa Cruz CA</span>
+                </p>
+              </LinkToExternal>
               <p className="flex flex-row items-center gap-2">
-                <MapPin />
-                <span>1900 17th Ave, Santa Cruz CA</span>
+                <Clock className="mx-0.5 size-5"/>
+                <span>7:00pm - 10:00pm</span>
               </p>
-            </LinkToExternal>
-            <p className="flex flex-row items-center gap-2">
-              <Clock className="mx-0.5 size-5" />
-              <span>7:00pm - 10:00pm</span>
-            </p>
-            <Separator />
-            <CardDescription>Before the event...</CardDescription>
-            <CardDescription>
-              5:30pm - Potluck, bring a dish to share!
-            </CardDescription>
-            <CardDescription>
-              6:30pm - Newcomer&apos;s introduction
-            </CardDescription>
-          </CardContent>
-        </Card>
+              <Separator/>
+            </div>
+            <div className="flex flex-col items-stretch gap-1 text-sm">
+              <p>Before the event...</p>
+              <p>5:30pm - Potluck, bring a dish to share!</p>
+              <p>6:30pm - Newcomer&apos;s introduction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Separator/>
+      <section className="m-auto flex w-full flex-row flex-wrap items-start justify-center gap-4 p-4">
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>Common Questions</CardTitle>
