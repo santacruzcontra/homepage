@@ -73,7 +73,7 @@ export function HomePageCarouselComponent({
           ))}
         </>
       </CarouselContent>
-      <CarouselDots />
+      {/*<CarouselDots />*/}
     </Carousel>
   );
 }
