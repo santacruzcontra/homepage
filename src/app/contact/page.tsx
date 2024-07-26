@@ -19,8 +19,8 @@ export default function ContactPage() {
 
 function FormLinkCard() {
   return (
-      <div className="flex flex-col items-stretch gap-4">
-          <h2 className="font-title italic text-3xl">Message our volunteers</h2>
+      <div className="max-w-[400px] flex flex-col items-stretch gap-4">
+          <h2 className="font-title italic text-2xl min-[700px]:text-3xl">Message our volunteers</h2>
           <p>
               Send us a message if you&apos;d like to sponsor a dance, volunteer, or
               offer up a suggestion.
@@ -43,8 +43,8 @@ function FormLinkCard() {
 
 function SubscribeNewsletterCard() {
     return (
-        <div className="flex flex-col items-stretch justify-between gap-4">
-            <h2 className="font-title italic text-3xl">Get the newsletter</h2>
+        <div className="max-w-[400px] flex flex-col items-stretch justify-between gap-4">
+            <h2 className="font-title italic text-2xl min-[700px]:text-3xl">Get the newsletter</h2>
             <p>
                 Enter your email to subscribe to our monthly newsletter and hear about
                 upcoming events.
