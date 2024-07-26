@@ -41,7 +41,7 @@ export function CarouselImage({
         priority={isFirst}
         onLoad={loadingComplete}
         onError={loadingComplete}
-        className={`rounded-lg ${loading ? "invisible" : "visible"}`}
+        className={`${loading ? "invisible" : "visible"}`}
       />
       <span
         className={`absolute top-0 ${whClasses} ${loading ? "block" : "hidden"}`}

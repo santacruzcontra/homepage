@@ -8,7 +8,7 @@ import { Skeleton } from "~/components/ui/skeleton";
 
 export async function HomePageCarousel() {
   return (
-    <Suspense fallback={<Skeleton className="h-[450px] w-[800px] " />}>
+    <Suspense fallback={<Skeleton className="h-[450px] w-[800px]" />}>
       <HomePageCarouselInner />
     </Suspense>
   );
