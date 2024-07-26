@@ -5,20 +5,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
-import { BadgeRibbon } from "./BadgeRibbon";
-import { ContraLogo } from "./ContraLogo";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
 
 export function MobileHeader() {
   return (
-    <header className="relative flex flex-col desktop:hidden">
+    <header className="relative flex flex-col min-[650px]:hidden w-full">
       <MobilePopoverNav />
-      <div className="flex flex-col items-center gap-2 px-2 py-4">
-        <div className="grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center">
-          <BadgeRibbon />
-          <ContraLogo height={128} />
-          <BadgeRibbon />
-        </div>
+      <div className="flex flex-col items-start gap-2 p-4">
+          <h1 className="font-title text-lg min-[500px]:text-2xl">Santa Cruz Contra Dance</h1>
       </div>
     </header>
   );
@@ -32,7 +26,7 @@ function MobilePopoverNav() {
 
   return (
     <Popover open={navOpen} onOpenChange={setNavOpen}>
-      <PopoverTrigger className="absolute right-2 top-2">
+      <PopoverTrigger className="absolute right-2.5 top-2.5 min-[500px]:top-3 min-[500px]:right-3">
         <MenuIcon
           className={`size-10 rounded-md border-[1px] border-[#B3895D] bg-[#D6AB7D] stroke-2 p-1 text-[#482919] active:border-opacity-30 active:bg-opacity-30 active:text-opacity-80 sm:size-12 sm:p-2 md:size-14 ${navOpen ? "border-opacity-25 bg-opacity-30 text-opacity-80" : "border-opacity-0 bg-opacity-0 text-opacity-60"}`}
         />

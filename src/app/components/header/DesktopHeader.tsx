@@ -2,7 +2,7 @@ import {HeaderNavItem, type HeaderNavItemSubProps} from "./HeaderNavItem";
 
 export function DesktopHeader() {
 	return (
-		<header className="flex flex-col gap-2 w-full">
+		<header className="hidden min-[650px]:flex flex-col gap-2 w-full">
             <h1 className="w-full text-center font-title text-4xl">Santa Cruz Contra Dance</h1>
 			<nav className="w-full flex flex-row gap-8 text-xl justify-center h-10 items-center">
 				<DesktopHeaderNavItem href="/">Home</DesktopHeaderNavItem>

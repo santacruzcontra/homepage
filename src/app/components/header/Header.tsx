@@ -7,7 +7,7 @@ export function Header() {
   return (
     <>
       <DesktopHeader />
-      {/*<MobileHeader />*/}
+      <MobileHeader />
     </>
   );
 }

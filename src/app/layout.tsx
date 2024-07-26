@@ -47,7 +47,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-dvh bg-[#ECF6F9] text-black">
         <main className="flex flex-col items-stretch justify-start p-0 min-[650px]:p-4">
-          <div className="container flex flex-col items-start justify-start max-w-[800px] gap-4">
+          <div className="container flex flex-col items-start justify-start max-w-[800px] min-[650px]:gap-4">
             <Header />
             <div className="flex flex-col items-stretch gap-4 w-full max-[650px]:[&>:not(.no-padding)]:px-4">
               {children}
