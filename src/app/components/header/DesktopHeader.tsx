@@ -1,34 +1,27 @@
-import { ContraLogo } from "./ContraLogo";
-import { BadgeRibbon } from "./BadgeRibbon";
-import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
+import {HeaderNavItem, type HeaderNavItemSubProps} from "./HeaderNavItem";
 
 export function DesktopHeader() {
-  return (
-    <header className="mx-auto hidden max-w-6xl p-4 desktop:block">
-      <nav className="-mx-4 grid grid-cols-[1fr_auto_1fr] items-center justify-center p-4 font-title text-xl font-semibold">
-        <BadgeRibbon>
-          <DesktopHeaderNavItem href="/">Home</DesktopHeaderNavItem>
-          <DesktopHeaderNavItem href="/events">Events</DesktopHeaderNavItem>
-        </BadgeRibbon>
-        <ContraLogo />
-        <BadgeRibbon>
-          <DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
-          <DesktopHeaderNavItem href="/policies">Policies</DesktopHeaderNavItem>
-        </BadgeRibbon>
-      </nav>
-    </header>
-  );
+	return (
+		<header className="flex flex-col gap-2 w-full">
+            <h2 className="w-full text-center font-title text-4xl">Santa Cruz Contra Dance</h2>
+			<nav className="w-full flex flex-row gap-8 text-xl justify-center h-10 items-center">
+				<DesktopHeaderNavItem href="/">Home</DesktopHeaderNavItem>
+				<DesktopHeaderNavItem href="/policies">Policies</DesktopHeaderNavItem>
+				<DesktopHeaderNavItem href="/contact">Contact</DesktopHeaderNavItem>
+			</nav>
+		</header>
+	);
 }
 
 function DesktopHeaderNavItem({
-  activeClassStr = "underline",
-  ...props
+	activeClassStr = "underline",
+	...props
 }: HeaderNavItemSubProps) {
-  return (
-    <HeaderNavItem
-      activeClassStr={activeClassStr}
-      className="hover:underline active:underline"
-      {...props}
-    />
-  );
+	return (
+		<HeaderNavItem
+			activeClassStr={activeClassStr}
+			className="hover:underline active:underline"
+			{...props}
+		/>
+	);
 }
