@@ -16,18 +16,13 @@ import { Separator } from "~/components/ui/separator";
 import { env } from "~/env";
 import { HomePageCarousel } from "./components/HomePageCarousel/HomePageCarousel";
 import { LinkToExternal } from "./components/LinkToExternal";
-import { PageTitle } from "./components/PageTitle";
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
     <>
-      <PageTitle>Santa Cruz Contra</PageTitle>
-      <h2 className="text-md w-full text-center font-medium sm:text-2xl">
-        4th Friday, Every Month
-      </h2>
-      <div className="flex w-full flex-col items-center p-4 pb-0">
+      <div className="flex w-full flex-col items-center">
         <HomePageCarousel />
       </div>
       <section className="m-auto flex w-full flex-row flex-wrap items-start justify-center gap-4 p-4">
