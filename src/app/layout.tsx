@@ -1,12 +1,14 @@
-import { Montserrat, Open_Sans } from "next/font/google";
+import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "~/styles/globals.css";
 import { Header } from "./components/header/Header";
 
-const bebasNeue = Open_Sans({
+const dmSerifDisplay = DM_Serif_Display({
+  weight: ['400'],
   subsets: ["latin"],
   variable: "--title-font",
 });
-const montserrat = Montserrat({ subsets: ["latin"] });
+
+const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Santa Cruz Contra Dance - A monthly social dance gathering.",
@@ -21,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.className} ${bebasNeue.variable}`}>
+    <html lang="en" className={`${dmSans.className} ${dmSerifDisplay.variable}`}>
       <head>
         <link
           rel="apple-touch-icon"
@@ -42,10 +44,10 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-dvh bg-[#ECF6F9]">
-        <Header />
-        <main className="flex flex-col items-stretch justify-start">
-          <div className="container flex flex-col items-start justify-start">
+      <body className="min-h-dvh bg-[#ECF6F9] text-black">
+        <main className="flex flex-col items-stretch justify-start p-4">
+          <div className="container flex flex-col items-start justify-start max-w-[800px]">
+            <Header />
             {children}
           </div>
         </main>
