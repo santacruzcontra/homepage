@@ -5,8 +5,8 @@ import { Skeleton } from "~/components/ui/skeleton";
 import { type Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { type ContentfulCarouselImage } from "~/types/Contentful";
 
-const CAROUSEL_IMG_WIDTH = 960;
-const CAROUSEL_IMG_HEIGHT = 540;
+const CAROUSEL_IMG_WIDTH = 800;
+const CAROUSEL_IMG_HEIGHT = 450;
 
 export function CarouselImage({
   imageEntry,

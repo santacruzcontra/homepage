@@ -57,7 +57,7 @@ export function HomePageCarouselComponent({
   return (
     <Carousel
       plugins={[autoplayPlugin.current]}
-      className="max-w-[960px]"
+      className="max-w-[800px]"
       setApi={setAPI}
     >
       <CarouselContent>
