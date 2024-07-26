@@ -10,7 +10,7 @@ export default function PoliciesPage() {
 	return (
 		<section className="w-full p-4 flex flex-col items-stretch">
 			<div className="flex flex-col items-stretch gap-4">
-				<h2 className="font-title text-4xl italic">Event Policies</h2>
+				<h2 className="font-title text-3xl min-[500px]:text-4xl italic">Event Policies</h2>
 				<Separator/>
 			</div>
 			<Accordion type="single" collapsible>
