@@ -25,8 +25,8 @@ export default function HomePage() {
       <div className="flex w-full flex-col items-center">
         <HomePageCarousel />
       </div>
-      <section className="flex flex-row items-stretch gap-4">
-        <div className="max-w-[500px] flex flex-col gap-2">
+      <section className="flex flex-col min-[650px]:flex-row items-stretch gap-4">
+        <div className="flex flex-col gap-2">
           <h2 className="font-title text-3xl italic">What is Contra Dance?</h2>
           <div className="flex flex-col items-stretch gap-4 text-base">
             <p>
@@ -52,7 +52,8 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        <Separator orientation="vertical" className="h-auto" />
+        <Separator orientation="vertical" className="h-auto hidden min-[650px]:block" />
+        <Separator className="min-[650px]:hidden" />
         <div className="flex flex-col gap-2 min-w-[260px]">
           <h2 className="font-title text-3xl italic">Sound like fun?</h2>
           <div className="flex flex-col items-stretch gap-4">
