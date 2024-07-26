@@ -44,9 +44,9 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-dvh bg-[#ECF6F9] text-black">
+      <body className="min-h-dvh min-w-[832px] bg-[#ECF6F9] text-black">
         <main className="flex flex-col items-stretch justify-start p-4">
-          <div className="container flex flex-col items-start justify-start max-w-[800px] gap-4 pl-0">
+          <div className="container flex flex-col items-start justify-start max-w-[800px] min-w-[800px] gap-4">
             <Header />
             <div className="flex flex-col items-stretch gap-4">
               {children}
