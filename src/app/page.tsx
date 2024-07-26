@@ -53,7 +53,7 @@ export default function HomePage() {
           </div>
         </div>
         <Separator orientation="vertical" className="h-auto" />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 min-w-[260px]">
           <h2 className="font-title text-3xl italic">Sound like fun?</h2>
           <div className="flex flex-col items-stretch gap-4">
             <div className="flex flex-col items-stretch gap-2 text-base">
