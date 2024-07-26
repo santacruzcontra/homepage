@@ -1,8 +1,6 @@
 import type { Config } from "tailwindcss";
 import { screens as defaultScreens } from "tailwindcss/defaultTheme";
 
-const { sm, md, lg, xl, "2xl": doubleXL } = defaultScreens;
-
 const config = {
   darkMode: ["class"],
   content: [
@@ -19,19 +17,7 @@ const config = {
         "2xl": "1400px",
       },
     },
-    screens: {
-      xs: "525px",
-      sm,
-      // This is added specifically to style the mobile nav menu on certain landscape phone screens
-      smNotShort: {
-        raw: "(min-width: 640px) and (min-height: 465px)",
-      },
-      md,
-      desktop: "800px",
-      lg,
-      xl,
-      "2xl": doubleXL,
-    },
+    screens: defaultScreens,
     extend: {
       colors: {
         border: "hsl(var(--border))",
