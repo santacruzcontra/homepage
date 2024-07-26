@@ -5,13 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
 import { Separator } from "~/components/ui/separator";
 import { env } from "~/env";
 import { HomePageCarousel } from "./components/HomePageCarousel/HomePageCarousel";
@@ -22,12 +15,12 @@ export const dynamic = "force-dynamic";
 export default function HomePage() {
   return (
     <>
-      <div className="flex w-full flex-col items-center">
+      <div className="flex w-full flex-col items-center no-padding">
         <HomePageCarousel />
       </div>
       <section className="flex flex-col min-[650px]:flex-row items-stretch gap-4">
         <div className="flex flex-col gap-2">
-          <h2 className="font-title text-3xl italic">What is Contra Dance?</h2>
+          <h2 className="font-title text-2xl min-[500px]:text-3xl italic">What is Contra Dance?</h2>
           <div className="flex flex-col items-stretch gap-4 text-base">
             <p>
               Contra Dance is a traditional social dancing event with origins in
@@ -55,7 +48,7 @@ export default function HomePage() {
         <Separator orientation="vertical" className="h-auto hidden min-[650px]:block" />
         <Separator className="min-[650px]:hidden" />
         <div className="flex flex-col gap-2 min-w-[260px]">
-          <h2 className="font-title text-3xl italic">Sound like fun?</h2>
+          <h2 className="font-title text-2xl min-[500px]:text-3xl italic">Sound like fun?</h2>
           <div className="flex flex-col items-stretch gap-4">
             <div className="flex flex-col items-stretch gap-2 text-base">
               <p className="text-lg font-semibold">Join us!</p>
@@ -83,10 +76,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <Separator/>
-      <section className="flex flex-col items-stretch justify-center p-8">
+      <div>
+        <Separator/>
+      </div>
+      <section className="flex flex-col items-stretch justify-center min-[500px]:p-8">
         <div className="flex flex-col items-stretch gap-4">
-          <h2 className="font-title text-4xl italic">Common Questions</h2>
+          <h2 className="font-title text-2xl min-[500px]:text-4xl italic">Common Questions</h2>
           <Separator />
         </div>
         <Accordion type="single" collapsible>
@@ -202,7 +197,9 @@ export default function HomePage() {
           </AccordionItem>
         </Accordion>
       </section>
-      <Separator className="mt-8" />
+      <div className="hidden min-[500px]:block">
+        <Separator className="mt-8" />
+      </div>
     </>
   );
 }
