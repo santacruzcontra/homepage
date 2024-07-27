@@ -164,7 +164,7 @@ export default function HomePage() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="learnMore">
-            <AccordionTrigger>Where can I learn more?</AccordionTrigger>
+            <AccordionTrigger>Where can I see more?</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2">
               <p>
                 There are many resources and videos across the web where you
