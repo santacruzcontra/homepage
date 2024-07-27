@@ -49,7 +49,7 @@ export default function RootLayout({
         <main className="flex-grow flex flex-col items-stretch justify-start p-0 min-[650px]:p-4">
           <div className="flex-grow container flex flex-col items-start justify-start max-w-[800px] min-[650px]:gap-4">
             <Header />
-            <div className="flex-grow flex flex-col items-stretch gap-4 w-full max-[650px]:[&>:not(.no-padding)]:px-4">
+            <div className="flex-grow flex flex-col items-stretch gap-4 w-full max-[649px]:[&>:not(.no-padding)]:px-4">
               {children}
             </div>
             <Footer />
