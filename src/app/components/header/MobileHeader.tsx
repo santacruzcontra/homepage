@@ -31,12 +31,12 @@ function MobilePopoverNav() {
 		<Popover open={navOpen} onOpenChange={setNavOpen}>
 			<PopoverTrigger className="absolute right-2.5 top-2.5 min-[500px]:top-3 min-[500px]:right-3">
 				<MenuIcon
-					className={`size-10 rounded-md border-[1px] border-[#B3895D] bg-[#D6AB7D] stroke-2 p-1 text-[#482919] active:border-opacity-30 active:bg-opacity-30 active:text-opacity-80 sm:size-12 sm:p-2 md:size-14 ${navOpen ? "border-opacity-25 bg-opacity-30 text-opacity-80" : "border-opacity-0 bg-opacity-0 text-opacity-60"}`}
+					className={`size-10 rounded-md border-[1px] border-[#bf490e] bg-[#ffbf69] stroke-2 p-1 text-[#bf490e] active:border-opacity-30 active:bg-opacity-30 active:text-opacity-60 sm:size-12 sm:p-2 md:size-14 ${navOpen ? "border-opacity-25 bg-opacity-30 text-opacity-60" : "border-opacity-0 bg-opacity-0 text-opacity-40"}`}
 				/>
 			</PopoverTrigger>
 			<PopoverContent
 				side="bottom"
-				className="mr-2 w-fit p-0 desktop:hidden"
+				className="mr-2 w-fit p-0 desktop:hidden border-[#bf490e]"
 				onClick={closeNav}
 			>
 				<nav className="flex flex-col items-stretch gap-0">
@@ -51,13 +51,13 @@ function MobilePopoverNav() {
 }
 
 function MobileHeaderNavItem({
-	activeClassStr = "bg-[#7A7265] bg-opacity-20",
+	activeClassStr = "bg-[#db7c26] bg-opacity-20",
 	...props
 }: HeaderNavItemSubProps) {
 	return (
 		<HeaderNavItem
 			activeClassStr={activeClassStr}
-			className="border-b-[1px] border-[#B3895D] border-opacity-50 py-3 pl-12 pr-6 text-right font-title text-xl font-medium last:border-b-0 smNotShort:py-5 smNotShort:pl-20 smNotShort:pr-10 smNotShort:text-3xl"
+			className="border-b-[1px] border-[#bf490e] border-opacity-50 py-3 pl-12 pr-6 text-right font-title text-xl font-medium last:border-b-0 smNotShort:py-5 smNotShort:pl-20 smNotShort:pr-10 smNotShort:text-3xl"
 			{...props}
 		/>
 	);
