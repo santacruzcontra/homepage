@@ -8,7 +8,7 @@ import {Separator} from "~/components/ui/separator";
 export default function ContactPage() {
   return (
     <>
-      <div className="flex flex-col min-[650px]:grid items-center min-[650px]:items-stretch gap-4 min-[650px]:grid-cols-[1fr_1px_1fr] min-[650px]:py-8">
+      <div className="mt-4 min-[500px]:mt-6 min-[650px]:mt-0 flex flex-col min-[650px]:grid items-center min-[650px]:items-stretch gap-4 min-[650px]:grid-cols-[1fr_1px_1fr] min-[650px]:py-8">
         <SubscribeNewsletterCard />
         <Separator orientation="vertical" className="h-auto hidden min-[650px]:block" />
         <Separator className="min-[650px]:hidden" />
