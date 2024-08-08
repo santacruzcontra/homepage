@@ -6,6 +6,7 @@ import {
   PopoverTrigger,
 } from "~/components/ui/popover";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
+import Link from "next/link";
 
 export function MobileHeader() {
   return (
@@ -13,9 +14,11 @@ export function MobileHeader() {
       <header className="relative flex w-full flex-col min-[650px]:hidden">
         <MobilePopoverNav />
         <div className="flex flex-col items-start gap-2 p-4">
-          <h1 className="font-title text-lg min-[500px]:text-2xl">
-            Santa Cruz Contra Dance
-          </h1>
+          <Link href="/">
+            <h1 className="font-title text-lg min-[500px]:text-2xl">
+              Santa Cruz Contra Dance
+            </h1>
+          </Link>
         </div>
       </header>
     </>
