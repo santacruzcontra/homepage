@@ -3,7 +3,7 @@
 import _BaseContentfulAPI from "./_BaseContentfulAPI";
 import type { Link, LinkTypes } from "./links";
 import type { ArrayResponse } from "./other";
-import { ResourceTypes, type Resource } from "./resources";
+import { type Resource, ResourceTypes } from "./resources";
 
 export type Entry<
   EntryType extends string = string,
@@ -14,7 +14,7 @@ export type Entry<
   { contentType: Link<LinkTypes.ContentType, EntryType> }
 >;
 
-export interface _GetEntriesByParamsInput {
+export type _GetEntriesByParamsInput = Record<string, unknown> & {
   contentType?: string;
   limit?: number;
   skip?: number;
@@ -22,7 +22,7 @@ export interface _GetEntriesByParamsInput {
   hasTags?: string | string[] | boolean;
   hasAllTags?: string | string[];
   orderBy?: string | EntryOrderQuerySpec | (string | EntryOrderQuerySpec)[];
-}
+};
 
 export interface EntryOrderQuerySpec {
   field: string;
