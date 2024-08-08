@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { screens as defaultScreens } from "tailwindcss/defaultTheme";
 
 const config = {
   darkMode: ["class"],
@@ -13,11 +12,7 @@ const config = {
   theme: {
     container: {
       center: true,
-      screens: {
-        "2xl": "1400px",
-      },
     },
-    screens: defaultScreens,
     extend: {
       colors: {
         border: "hsl(var(--border))",
