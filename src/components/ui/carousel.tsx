@@ -245,7 +245,7 @@ function CarouselDots({
                     }}
                     className={cn(
                         className,
-                        `xs:p-2 appearance-none px-1.5 py-2 after:block after:h-2.5 after:w-2.5 after:rounded-full after:border-2 after:border-[#482919] after:border-opacity-50 after:content-[''] sm:p-2.5 sm:after:h-3 sm:after:w-3 ${i === selected ? "after:bg-[#482919]" : "after:bg-transparent"}`,
+                        `appearance-none px-1.5 py-2 after:block after:h-2.5 after:w-2.5 after:rounded-full after:border-[1px] after:border-[#1a1a1a] after:border-opacity-50 after:content-[''] after:hover:bg-[#1a1a1a] after:hover:bg-opacity-10 min-[450px]:p-2 min-[500px]:p-2.5 min-[500px]:after:h-3 min-[500px]:after:w-3 ${i === selected ? "after:bg-[#1a1a1a] after:hover:bg-opacity-100" : "after:bg-transparent"}`,
                     )}
                 />
             ))}
