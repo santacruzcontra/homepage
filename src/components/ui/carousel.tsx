@@ -233,7 +233,10 @@ function CarouselDots({
 
     return (
         <div
-            className={cn(className, "flex flex-row justify-center gap-0 p-0")}
+            className={cn(
+                className,
+                "hidden flex-row justify-center gap-0 p-0 min-[500px]:flex",
+            )}
             {...props}
         >
             {slides.map((_, i) => (
