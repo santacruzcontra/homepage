@@ -5,6 +5,8 @@ import {
     Carousel,
     CarouselContent,
     CarouselDots,
+    CarouselNext,
+    CarouselPrevious,
 } from "~/components/ui/carousel";
 import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
@@ -40,9 +42,10 @@ export function SplashImageCarouselComponent({
     return (
         <Carousel
             plugins={[autoplayPlugin.current]}
-            className="max-w-[800px]"
+            className="max-w-[800px] min-[450px]:px-2 min-[550px]:px-4 min-[1000px]:px-8"
             setApi={setAPI}
         >
+            <CarouselPrevious />
             <CarouselContent>
                 <>
                     {imageArrayRes.items.map((imageEntry, idx) => (
@@ -58,6 +61,7 @@ export function SplashImageCarouselComponent({
                     ))}
                 </>
             </CarouselContent>
+            <CarouselNext />
             <CarouselDots />
         </Carousel>
     );

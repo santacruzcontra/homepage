@@ -7,6 +7,8 @@ import {
     Carousel,
     CarouselContent,
     CarouselDots,
+    CarouselNext,
+    CarouselPrevious,
 } from "~/components/ui/carousel";
 import { DancerQuoteItem } from "./DancerQuoteItem";
 
@@ -23,6 +25,7 @@ export function QuoteCarouselComponent({
 
     return (
         <Carousel plugins={[autoplayPlugin.current]} setApi={setAPI}>
+            <CarouselPrevious />
             <CarouselContent>
                 <>
                     {quoteArrayRes.items?.map((itemEntry) => (
@@ -33,6 +36,7 @@ export function QuoteCarouselComponent({
                     ))}
                 </>
             </CarouselContent>
+            <CarouselNext />
             <CarouselDots />
         </Carousel>
     );

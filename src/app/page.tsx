@@ -92,9 +92,7 @@ export default function HomePage() {
                 <Separator />
             </div>
             <div>
-                <div className="min-[450px]:px-2 min-[550px]:px-4 min-[1000px]:px-8">
-                    <QuoteCarousel />
-                </div>
+                <QuoteCarousel />
             </div>
             <div>
                 <Separator />
