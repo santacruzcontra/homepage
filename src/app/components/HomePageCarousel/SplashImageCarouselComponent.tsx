@@ -19,6 +19,7 @@ export function SplashImageCarouselComponent({
     const [, setAPI, autoplayPlugin] = useAutoplayCarousel();
 
     const play = useCallback(() => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
         autoplayPlugin.current?.play();
     }, [autoplayPlugin]);
 

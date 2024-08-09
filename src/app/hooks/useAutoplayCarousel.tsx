@@ -24,12 +24,14 @@ export function useAutoplayCarousel({
     const [api, setAPI] = useState<CarouselApi>();
 
     const autoplayPlugin = useRef(
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         Autoplay({ playOnInit, stopOnInteraction, delay, ...params }),
     );
 
     useEffect(() => {
         if (api) {
             const resetAutoplayTimer = () => {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
                 autoplayPlugin.current?.reset();
             };
 
