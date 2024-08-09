@@ -1,7 +1,11 @@
 "use client";
 
 import { useCallback, useMemo } from "react";
-import { Carousel, CarouselContent } from "~/components/ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselDots,
+} from "~/components/ui/carousel";
 import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
 import { CarouselImage } from "./CarouselImage";
@@ -54,7 +58,7 @@ export function SplashImageCarouselComponent({
                     ))}
                 </>
             </CarouselContent>
-            {/*<CarouselDots />*/}
+            <CarouselDots />
         </Carousel>
     );
 }

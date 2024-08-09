@@ -3,7 +3,11 @@
 import { type Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { type ContentfulDancerQuote } from "~/types/Contentful";
 import { useAutoplayCarousel } from "~/app/hooks/useAutoplayCarousel";
-import { Carousel, CarouselContent } from "~/components/ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselDots,
+} from "~/components/ui/carousel";
 import { DancerQuoteItem } from "./DancerQuoteItem";
 
 type QuoteCarouselComponentProps = {
@@ -29,6 +33,7 @@ export function QuoteCarouselComponent({
                     ))}
                 </>
             </CarouselContent>
+            <CarouselDots />
         </Carousel>
     );
 }
