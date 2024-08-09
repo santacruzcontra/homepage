@@ -1,12 +1,12 @@
 "use server";
 
 import { Suspense } from "react";
-import { HomePageCarouselComponent } from "./HomePageCarouselComponent";
+import { SplashImageCarouselComponent } from "./SplashImageCarouselComponent";
 import { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { ContentfulCarouselImage } from "~/types/Contentful";
 import { Skeleton } from "~/components/ui/skeleton";
 
-export async function HomePageCarousel() {
+export async function SplashImageCarousel() {
   return (
     <Suspense fallback={<Skeleton className="h-[450px] w-[800px]" />}>
       <HomePageCarouselInner />
@@ -22,5 +22,5 @@ async function HomePageCarouselInner() {
       orderBy: { field: "sys.updatedAt", desc: true },
     });
 
-  return <HomePageCarouselComponent imageArrayRes={imageArrayRes} />;
+  return <SplashImageCarouselComponent imageArrayRes={imageArrayRes} />;
 }

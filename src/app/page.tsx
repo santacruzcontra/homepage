@@ -1,13 +1,13 @@
 import { Clock, MapPin } from "lucide-react";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "~/components/ui/accordion";
 import { Separator } from "~/components/ui/separator";
 import { env } from "~/env";
-import { HomePageCarousel } from "./components/HomePageCarousel/HomePageCarousel";
+import { SplashImageCarousel } from "./components/HomePageCarousel/SplashImageCarousel";
 import { LinkToExternal } from "./components/LinkToExternal";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +16,6 @@ export default function HomePage() {
   return (
     <>
       <div className="flex w-full flex-col items-center no-padding">
-        <HomePageCarousel />
       </div>
       <section className="flex flex-col min-[650px]:flex-row items-stretch gap-4">
         <div className="flex flex-col gap-2">
@@ -202,4 +201,5 @@ export default function HomePage() {
       </div>
     </>
   );
+                <SplashImageCarousel />
 }

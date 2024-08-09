@@ -1,16 +1,11 @@
 "use client";
 
-import Autoplay from "embla-carousel-autoplay";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselDots,
-  type CarouselApi,
-} from "~/components/ui/carousel";
+import { useCallback, useMemo } from "react";
+import { Carousel, CarouselContent } from "~/components/ui/carousel";
 import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
 import { CarouselImage } from "./CarouselImage";
+import { useAutoplayCarousel } from "~/app/hooks/useAutoplayCarousel";
 
 type HomePageCarouselComponentProps = {
   imageArrayRes: Contentful.ArrayResponse<ContentfulCarouselImage.Entry>;
@@ -18,36 +13,19 @@ type HomePageCarouselComponentProps = {
 
 type AssetMap = Record<string, Contentful.Asset>;
 
-export function HomePageCarouselComponent({
+export function SplashImageCarouselComponent({
   imageArrayRes,
 }: HomePageCarouselComponentProps) {
-  const [api, setAPI] = useState<CarouselApi>();
-
-  const autoplayPlugin = useRef(
-    Autoplay({ delay: 6500, stopOnInteraction: false, playOnInit: false }),
-  );
+  const [, setAPI, autoplayPlugin] = useAutoplayCarousel();
 
   const play = useCallback(() => {
-    (autoplayPlugin.current as { play: () => void }).play();
+    autoplayPlugin.current?.play();
   }, [autoplayPlugin]);
 
   const assetsByID = useMemo(
     () => mapAssetsToID(imageArrayRes.includes?.Asset),
     [imageArrayRes],
   );
-
-  useEffect(() => {
-    if (api) {
-      const resetAutoplayTimer = () => {
-        (autoplayPlugin.current as { reset: () => void }).reset();
-      };
-
-      api.on("select", resetAutoplayTimer);
-      return () => {
-        api.off("select", resetAutoplayTimer);
-      };
-    }
-  }, [api]);
 
   // We can't render our carousel with no assets buddy
   if (assetsByID === undefined) {
