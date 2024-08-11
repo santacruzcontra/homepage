@@ -30,9 +30,26 @@ export function MobileHeader() {
 
 function MobilePopoverNav() {
     const [navOpen, setNavOpen] = useState(false);
+
     const closeNav = useCallback(() => {
         setNavOpen(false);
     }, [setNavOpen]);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia(
+            `(min-width:${MOBILE_HEADER_BREAKPOINT}px)`,
+        );
+
+        const closeOnMatch = (e: MediaQueryListEvent) => {
+            if (e.matches) closeNav();
+        };
+
+        mediaQuery.addEventListener("change", closeOnMatch);
+
+        return () => {
+            mediaQuery.removeEventListener("change", closeOnMatch);
+        };
+    }, [closeNav]);
 
     return (
         <Popover open={navOpen} onOpenChange={setNavOpen}>
