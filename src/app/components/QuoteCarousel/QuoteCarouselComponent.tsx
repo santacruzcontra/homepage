@@ -21,6 +21,7 @@ export function QuoteCarouselComponent({
 }: QuoteCarouselComponentProps) {
     const [, setAPI, autoplayPlugin] = useAutoplayCarousel({
         playOnInit: true,
+        delay: 15000,
     });
 
     return (
