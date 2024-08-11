@@ -280,16 +280,17 @@ const CarouselPrevious = forwardRef<
             variant={variant}
             size={size}
             className={cn(
-                "absolute  h-8 w-8 rounded-full",
+                "absolute hidden h-6 w-6 rounded-full min-[875px]:flex min-[900px]:h-7 min-[900px]:w-7",
+                "min-[925px]:h-8 min-[925px]:w-8 min-[950px]:h-9 min-[950px]:w-9 min-[975px]:h-10 min-[975px]:w-10",
                 orientation === "horizontal"
-                    ? "-left-12 top-1/2 -translate-y-1/2"
+                    ? "-left-8 top-1/2 -translate-y-1/2 min-[900px]:-left-10 min-[925px]:-left-12 min-[950px]:-left-14 min-[975px]:-left-16"
                     : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
                 className,
             )}
             onClick={scrollPrev}
             {...props}
         >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-3 w-3 min-[900px]:h-4 min-[900px]:w-4 min-[950px]:h-5 min-[950px]:w-5 min-[975px]:h-6 min-[975px]:w-6" />
             <span className="sr-only">Previous slide</span>
         </Button>
     );
@@ -320,16 +321,17 @@ const CarouselNext = forwardRef<
             variant={variant}
             size={size}
             className={cn(
-                "absolute h-8 w-8 rounded-full",
+                "absolute hidden h-6 w-6 rounded-full min-[875px]:flex min-[900px]:h-7 min-[900px]:w-7",
+                "min-[925px]:h-8 min-[925px]:w-8 min-[950px]:h-9 min-[950px]:w-9 min-[975px]:h-10 min-[975px]:w-10",
                 orientation === "horizontal"
-                    ? "-right-12 top-1/2 -translate-y-1/2"
+                    ? "-right-8 top-1/2 -translate-y-1/2 min-[900px]:-right-10 min-[925px]:-right-12 min-[950px]:-right-14 min-[975px]:-right-16"
                     : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
                 className,
             )}
             onClick={scrollNext}
             {...props}
         >
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3 w-3 min-[900px]:h-4 min-[900px]:w-4 min-[950px]:h-5 min-[950px]:w-5 min-[975px]:h-6 min-[975px]:w-6" />
             <span className="sr-only">Next slide</span>
         </Button>
     );
