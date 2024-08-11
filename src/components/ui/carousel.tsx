@@ -56,7 +56,7 @@ function useCarouselDots() {
 
     const onDotClick = useCallback(
         (index: number) => {
-            if (api) api.scrollTo(index);
+            api?.scrollTo(index);
         },
         [api],
     );
@@ -260,7 +260,19 @@ const CarouselPrevious = forwardRef<
     HTMLButtonElement,
     React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-    const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+    const { orientation, api } = useCarousel();
+
+    const scrollPrev = useCallback(() => {
+        if (api) {
+            const curIdx = api.selectedScrollSnap();
+
+            if (curIdx === 0) {
+                api.scrollTo(api.scrollSnapList().length - 1);
+            } else {
+                api.scrollTo(curIdx - 1);
+            }
+        }
+    }, [api]);
 
     return (
         <Button
@@ -274,7 +286,6 @@ const CarouselPrevious = forwardRef<
                     : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
                 className,
             )}
-            disabled={!canScrollPrev}
             onClick={scrollPrev}
             {...props}
         >
@@ -289,7 +300,19 @@ const CarouselNext = forwardRef<
     HTMLButtonElement,
     React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-    const { orientation, scrollNext, canScrollNext } = useCarousel();
+    const { orientation, api } = useCarousel();
+
+    const scrollNext = useCallback(() => {
+        if (api) {
+            const curIdx = api.selectedScrollSnap();
+
+            if (curIdx === api.scrollSnapList().length - 1) {
+                api.scrollTo(0);
+            } else {
+                api.scrollTo(curIdx + 1);
+            }
+        }
+    }, [api]);
 
     return (
         <Button
@@ -303,7 +326,6 @@ const CarouselNext = forwardRef<
                     : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
                 className,
             )}
-            disabled={!canScrollNext}
             onClick={scrollNext}
             {...props}
         >
