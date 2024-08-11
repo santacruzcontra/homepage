@@ -97,7 +97,7 @@ export default function HomePage() {
             <div>
                 <QuoteCarousel />
             </div>
-            <div>
+            <div className="-mt-2">
                 <Separator />
             </div>
             <section className="flex flex-col items-stretch justify-center min-[650px]:p-8">
