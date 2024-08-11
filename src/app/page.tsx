@@ -19,6 +19,9 @@ export default function HomePage() {
             <div className="no-padding flex w-full flex-col items-center">
                 <SplashImageCarousel />
             </div>
+            <div className="-mt-4">
+                <Separator />
+            </div>
             <section className="flex flex-col items-stretch gap-4 min-[650px]:flex-row">
                 <div className="flex flex-col gap-2">
                     <h2 className="font-title text-2xl italic min-[500px]:text-3xl">
