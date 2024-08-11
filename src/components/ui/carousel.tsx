@@ -233,10 +233,7 @@ function CarouselDots({
 
     return (
         <div
-            className={cn(
-                className,
-                "hidden flex-row justify-center gap-0 p-0 min-[500px]:flex",
-            )}
+            className={cn(className, "flex flex-row justify-center gap-0 p-0")}
             {...props}
         >
             {slides.map((_, i) => (
@@ -248,7 +245,13 @@ function CarouselDots({
                     }}
                     className={cn(
                         className,
-                        `appearance-none px-1.5 py-2 after:block after:h-2.5 after:w-2.5 after:rounded-full after:border-[1px] after:border-[#1a1a1a] after:border-opacity-50 after:content-[''] after:hover:bg-[#1a1a1a] after:hover:bg-opacity-10 min-[450px]:p-2 min-[500px]:p-2.5 min-[500px]:after:h-3 min-[500px]:after:w-3 ${i === selected ? "after:bg-[#1a1a1a] after:hover:bg-opacity-100" : "after:bg-transparent"}`,
+                        "appearance-none px-1.5 py-2 min-[400px]:px-2 min-[400px]:py-2.5 min-[500px]:p-2.5",
+                        "after:block after:rounded-full after:border-[1px] after:border-[#1a1a1a] after:border-opacity-50 after:content-['']",
+                        "after:h-2.5 after:w-2.5 min-[450px]:after:h-3 min-[450px]:after:w-3",
+                        "after:hover:bg-[#1a1a1a] after:hover:bg-opacity-10",
+                        i === selected
+                            ? "after:bg-[#1a1a1a] after:hover:bg-opacity-100"
+                            : "after:bg-transparent",
                     )}
                 />
             ))}
