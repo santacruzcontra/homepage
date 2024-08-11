@@ -1,1 +1,0 @@
-export const MOBILE_HEADER_BREAKPOINT = 650;

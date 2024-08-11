@@ -1,12 +1,9 @@
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
 import Link from "next/link";
-import { MOBILE_HEADER_BREAKPOINT } from "~/config/constants";
 
 export function DesktopHeader() {
     return (
-        <header
-            className={`hidden w-full flex-col gap-2 min-[${MOBILE_HEADER_BREAKPOINT}px]:flex`}
-        >
+        <header className={`hidden w-full flex-col gap-2 min-[650px]:flex`}>
             <Link href="/">
                 <h1 className="w-full text-center font-title text-4xl">
                     Santa Cruz Contra Dance

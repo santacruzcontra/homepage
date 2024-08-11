@@ -7,13 +7,12 @@ import {
 } from "~/components/ui/popover";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
 import Link from "next/link";
-import { MOBILE_HEADER_BREAKPOINT } from "~/config/constants";
 
 export function MobileHeader() {
     return (
         <>
             <header
-                className={`relative flex w-full flex-col min-[${MOBILE_HEADER_BREAKPOINT}px]:hidden`}
+                className={`relative flex w-full flex-col min-[650px]:hidden`}
             >
                 <MobilePopoverNav />
                 <div className="flex flex-col items-start gap-2 p-4">
@@ -36,9 +35,7 @@ function MobilePopoverNav() {
     }, [setNavOpen]);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia(
-            `(min-width:${MOBILE_HEADER_BREAKPOINT}px)`,
-        );
+        const mediaQuery = window.matchMedia(`(min-width:650px)`);
 
         const closeOnMatch = (e: MediaQueryListEvent) => {
             if (e.matches) closeNav();
