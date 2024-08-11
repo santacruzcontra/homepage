@@ -1,5 +1,5 @@
 import { MenuIcon } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
     Popover,
     PopoverContent,
@@ -7,11 +7,14 @@ import {
 } from "~/components/ui/popover";
 import { HeaderNavItem, type HeaderNavItemSubProps } from "./HeaderNavItem";
 import Link from "next/link";
+import { MOBILE_HEADER_BREAKPOINT } from "~/config/constants";
 
 export function MobileHeader() {
     return (
         <>
-            <header className="relative flex w-full flex-col min-[650px]:hidden">
+            <header
+                className={`relative flex w-full flex-col min-[${MOBILE_HEADER_BREAKPOINT}px]:hidden`}
+            >
                 <MobilePopoverNav />
                 <div className="flex flex-col items-start gap-2 p-4">
                     <Link href="/">
