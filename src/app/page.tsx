@@ -81,8 +81,8 @@ export default function HomePage() {
                                 <Clock className="mx-0.5 size-5" />
                                 <span>7:00pm - 10:00pm</span>
                             </p>
-                            <Separator />
                         </div>
+                        <Separator />
                         <div className="flex flex-col items-stretch gap-1 text-sm">
                             <p>Before the event...</p>
                             <p>5:30pm - Potluck, bring a dish to share!</p>
