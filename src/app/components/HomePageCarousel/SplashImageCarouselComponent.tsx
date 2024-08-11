@@ -42,7 +42,7 @@ export function SplashImageCarouselComponent({
     return (
         <Carousel
             plugins={[autoplayPlugin.current]}
-            className="max-w-[800px] min-[450px]:px-2 min-[550px]:px-4 min-[1000px]:px-8"
+            className="max-w-[800px]"
             setApi={setAPI}
         >
             <CarouselPrevious />
