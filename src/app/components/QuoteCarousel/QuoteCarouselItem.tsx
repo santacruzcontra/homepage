@@ -8,6 +8,7 @@ export interface DancerQuoteProps {
 export function QuoteCarouselItem({ quoteEntry }: DancerQuoteProps) {
     // Replace the final whitespace character in the text with a non-breaking space
     const quoteText = quoteEntry.fields.quote
+        .trim()
         .split(/\s+/g)
         .reduce((res, strPart, idx, arr) => {
             if (!res) return strPart;
