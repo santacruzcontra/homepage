@@ -19,7 +19,7 @@ export function QuoteCarouselItem({ quoteEntry }: DancerQuoteProps) {
         <CarouselItem>
             <div className="flex h-full flex-col gap-2">
                 <div className="flex flex-grow flex-col justify-center">
-                    <span className="text-center text-sm min-[400px]:text-base">
+                    <span className="text-center text-sm min-[400px]:text-base min-[650px]:text-lg">
                         <span className="font-title">&#8220;</span>
                         {quoteText}
                         <span className="font-title">&#8221;</span>

@@ -27,16 +27,18 @@ export function QuoteCarouselComponent({
     return (
         <Carousel plugins={[autoplayPlugin.current]} setApi={setAPI}>
             <CarouselPrevious />
-            <CarouselContent>
-                <>
-                    {quoteArrayRes.items?.map((itemEntry) => (
-                        <QuoteCarouselItem
-                            key={itemEntry.sys.id}
-                            quoteEntry={itemEntry}
-                        />
-                    ))}
-                </>
-            </CarouselContent>
+            <div className="min-[650px]:p-4 min-[800px]:px-8 min-[800px]:py-6">
+                <CarouselContent>
+                    <>
+                        {quoteArrayRes.items?.map((itemEntry) => (
+                            <QuoteCarouselItem
+                                key={itemEntry.sys.id}
+                                quoteEntry={itemEntry}
+                            />
+                        ))}
+                    </>
+                </CarouselContent>
+            </div>
             <CarouselNext />
             <CarouselDots />
         </Carousel>
