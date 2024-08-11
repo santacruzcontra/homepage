@@ -8,7 +8,7 @@ import { type ContentfulCarouselImage } from "~/types/Contentful";
 const CAROUSEL_IMG_WIDTH = 800;
 const CAROUSEL_IMG_HEIGHT = 450;
 
-export function CarouselImage({
+export function SplashImageCarouselItem({
     imageEntry,
     imageAsset,
     isFirst,

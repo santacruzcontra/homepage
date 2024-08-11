@@ -10,7 +10,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "~/components/ui/carousel";
-import { DancerQuoteItem } from "./DancerQuoteItem";
+import { QuoteCarouselItem } from "./QuoteCarouselItem";
 
 type QuoteCarouselComponentProps = {
     quoteArrayRes: Contentful.ArrayResponse<ContentfulDancerQuote.Entry>;
@@ -30,7 +30,7 @@ export function QuoteCarouselComponent({
             <CarouselContent>
                 <>
                     {quoteArrayRes.items?.map((itemEntry) => (
-                        <DancerQuoteItem
+                        <QuoteCarouselItem
                             key={itemEntry.sys.id}
                             quoteEntry={itemEntry}
                         />

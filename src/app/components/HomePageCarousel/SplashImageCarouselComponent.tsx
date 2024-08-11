@@ -10,7 +10,7 @@ import {
 } from "~/components/ui/carousel";
 import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
-import { CarouselImage } from "./CarouselImage";
+import { SplashImageCarouselItem } from "./SplashImageCarouselItem";
 import { useAutoplayCarousel } from "~/app/hooks/useAutoplayCarousel";
 
 type HomePageCarouselComponentProps = {
@@ -49,7 +49,7 @@ export function SplashImageCarouselComponent({
             <CarouselContent>
                 <>
                     {imageArrayRes.items.map((imageEntry, idx) => (
-                        <CarouselImage
+                        <SplashImageCarouselItem
                             key={imageEntry.sys.id}
                             isFirst={idx === 0}
                             imageEntry={imageEntry}
