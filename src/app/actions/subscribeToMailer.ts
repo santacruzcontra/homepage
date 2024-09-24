@@ -1,7 +1,7 @@
 "use server";
 
-import { Mailchimp } from "~/lib/mailchimp-api";
 import { EmailFormSchema } from "~/lib/schemas";
+import { MailchimpAPI, MailchimpTags } from "~/api/MailchimpAPI";
 
 /**
  * Subscribe the user with the given email address to the configured
@@ -22,10 +22,10 @@ export async function subscribeToMailer(email: string) {
     }
 
     // Subscribe the user to our mailing list
-    const subRes = await Mailchimp.audience.subscribe(result.data.email);
+    const subRes = await MailchimpAPI.audience.subscribe(result.data.email);
 
     // Make sure we were successful
-    if (Mailchimp.isErrorRes(subRes)) {
+    if (MailchimpAPI.isErrorRes(subRes)) {
         if (subRes.title === "Member Exists") {
             return {
                 ok: false,
@@ -55,13 +55,13 @@ export async function subscribeToMailer(email: string) {
 
     try {
         // If the call was successful, add the tags for our user
-        const addTagRes = await Mailchimp.tags.add(subRes.id, [
-            Mailchimp.tags.WEBSITE,
-            Mailchimp.tags.DISCC,
+        const addTagRes = await MailchimpAPI.tags.add(subRes.id, [
+            MailchimpTags.WEBSITE,
+            MailchimpTags.DISCC,
         ]);
 
         // Make sure we didn't get any mailchimp errors
-        if (Mailchimp.isErrorRes(addTagRes)) {
+        if (MailchimpAPI.isErrorRes(addTagRes)) {
             // TODO - do we even throw an error here? Seems silly, maybe we let it go through
             throw addTagRes;
         }
@@ -72,7 +72,7 @@ export async function subscribeToMailer(email: string) {
         ) {
             // Handle this annoying fake error that happens because of my shoddy old
             // API lib - the body is empty, response.json() errors out. Do nothing!
-        } else if (Mailchimp.isErrorRes(err)) {
+        } else if (MailchimpAPI.isErrorRes(err)) {
             // Handle mailchimp errors
             return { ok: false, status: 404, errors: [err.detail] };
         } else {

@@ -1,4 +1,4 @@
-import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
+import { type Contentful } from "@brr-dev/contentful";
 
 export const id = "quote";
 export type Entry = Contentful.Entry<

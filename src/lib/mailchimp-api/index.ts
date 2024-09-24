@@ -1,1 +1,1 @@
-export * as Mailchimp from "./src";
+export * from "./src";

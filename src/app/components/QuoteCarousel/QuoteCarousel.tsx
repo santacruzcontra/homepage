@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { ContentfulDancerQuote } from "~/types/Contentful";
 import { QuoteCarouselComponent } from "~/app/components/QuoteCarousel/QuoteCarouselComponent";
+import { ContentfulAPI } from "~/api/ContentfulAPI";
 
 export async function QuoteCarousel() {
     return (
@@ -13,11 +13,12 @@ export async function QuoteCarousel() {
 
 async function QuoteCarouselInner() {
     const quoteArrayRes =
-        await Contentful.entries.getList<ContentfulDancerQuote.Entry>({
+        await ContentfulAPI.entries.getList<ContentfulDancerQuote.Entry>({
             contentType: ContentfulDancerQuote.id,
             limit: 10,
-            orderBy: { field: "sys.updatedAt", desc: true },
-            "fields.active": true,
+            // TODO get info
+            // orderBy: { field: "sys.updatedAt", desc: true },
+            // "fields.active": true,
         });
 
     return <QuoteCarouselComponent quoteArrayRes={quoteArrayRes} />;
