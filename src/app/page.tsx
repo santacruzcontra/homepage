@@ -1,4 +1,4 @@
-import { Clock, MapPin } from "lucide-react";
+import { Clock, MapPin, School } from "lucide-react";
 import {
     Accordion,
     AccordionContent,
@@ -65,8 +65,9 @@ export default function HomePage() {
                         <div className="flex flex-col items-stretch gap-2 text-base">
                             <p className="text-lg font-semibold">Join us!</p>
                             <p>
-                                We meet the 4th Friday of every month at the
-                                Live Oak Grange.
+                                We hold dances twice a month at the Live Oak
+                                Grange, starting with a newcomer&apos;s
+                                introduction
                             </p>
                             <LinkToExternal
                                 href="https://www.google.com/maps/search/?api=1&query=live+oak+grange+santa+cruz+ca"
@@ -77,16 +78,34 @@ export default function HomePage() {
                                     <span>1900 17th Ave, Santa Cruz CA</span>
                                 </p>
                             </LinkToExternal>
+                        </div>
+                        <Separator />
+                        <div className="flex flex-col items-stretch gap-1">
+                            <p>Every 4th Friday</p>
+                            <p className="flex flex-row items-start gap-2">
+                                <School className="mx-0.5 size-5" />
+                                6:30pm - Introduction
+                            </p>
                             <p className="flex flex-row items-center gap-2">
                                 <Clock className="mx-0.5 size-5" />
-                                <span>7:00pm - 10:00pm</span>
+                                <span className="underline">
+                                    7:00pm - 10:00pm
+                                </span>
                             </p>
                         </div>
                         <Separator />
-                        <div className="flex flex-col items-stretch gap-1 text-sm">
-                            <p>Before the event...</p>
-                            <p>5:30pm - Potluck, bring a dish to share!</p>
-                            <p>6:30pm - Newcomer&apos;s introduction</p>
+                        <div className="flex flex-col items-stretch gap-1">
+                            <p>Every 2nd Sunday</p>
+                            <p className="flex flex-row items-start gap-2">
+                                <School className="mx-0.5 size-5" />
+                                2:30pm - Introduction
+                            </p>
+                            <p className="flex flex-row items-center gap-2">
+                                <Clock className="mx-0.5 size-5" />
+                                <span className="underline">
+                                    3:00pm - 5:30pm
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -8,10 +8,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "~/components/ui/carousel";
-import type { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import type { ContentfulCarouselImage } from "~/types/Contentful";
 import { SplashImageCarouselItem } from "./SplashImageCarouselItem";
 import { useAutoplayCarousel } from "~/app/hooks/useAutoplayCarousel";
+import { type Contentful } from "@brr-dev/contentful";
 
 type HomePageCarouselComponentProps = {
     imageArrayRes: Contentful.ArrayResponse<ContentfulCarouselImage.Entry>;

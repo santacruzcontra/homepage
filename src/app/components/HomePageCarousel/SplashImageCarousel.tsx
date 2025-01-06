@@ -2,9 +2,9 @@
 
 import { Suspense } from "react";
 import { SplashImageCarouselComponent } from "./SplashImageCarouselComponent";
-import { Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { ContentfulCarouselImage } from "~/types/Contentful";
 import { Skeleton } from "~/components/ui/skeleton";
+import { ContentfulAPI } from "~/api/ContentfulAPI";
 
 export async function SplashImageCarousel() {
     return (
@@ -16,10 +16,10 @@ export async function SplashImageCarousel() {
 
 async function HomePageCarouselInner() {
     const imageArrayRes =
-        await Contentful.entries.getList<ContentfulCarouselImage.Entry>({
+        await ContentfulAPI.entries.getList<ContentfulCarouselImage.Entry>({
             contentType: ContentfulCarouselImage.id,
             limit: 10,
-            orderBy: { field: "sys.updatedAt", desc: true },
+            // orderBy: { field: "sys.updatedAt", desc: true },
         });
 
     return <SplashImageCarouselComponent imageArrayRes={imageArrayRes} />;

@@ -1,6 +1,5 @@
 "use client";
 
-import { type Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { type ContentfulDancerQuote } from "~/types/Contentful";
 import { useAutoplayCarousel } from "~/app/hooks/useAutoplayCarousel";
 import {
@@ -11,6 +10,7 @@ import {
     CarouselPrevious,
 } from "~/components/ui/carousel";
 import { QuoteCarouselItem } from "./QuoteCarouselItem";
+import { type Contentful } from "@brr-dev/contentful";
 
 type QuoteCarouselComponentProps = {
     quoteArrayRes: Contentful.ArrayResponse<ContentfulDancerQuote.Entry>;

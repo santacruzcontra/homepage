@@ -2,8 +2,8 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 import { CarouselItem } from "~/components/ui/carousel";
 import { Skeleton } from "~/components/ui/skeleton";
-import { type Contentful } from "~/lib/contentful-api/ContentfulAPI";
 import { type ContentfulCarouselImage } from "~/types/Contentful";
+import { type Contentful } from "@brr-dev/contentful";
 
 const CAROUSEL_IMG_WIDTH = 800;
 const CAROUSEL_IMG_HEIGHT = 450;
