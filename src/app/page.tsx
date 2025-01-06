@@ -66,7 +66,7 @@ export default function HomePage() {
                             <p className="text-lg font-semibold">Join us!</p>
                             <p>
                                 We hold dances twice a month at the Live Oak
-                                Grange, starting with a newcomer&apos;s
+                                Grange, starting with a newcomer&#39;s
                                 introduction
                             </p>
                             <LinkToExternal
