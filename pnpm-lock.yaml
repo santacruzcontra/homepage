@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@brr-dev/contentful':
+        specifier: ^0.2.6
+        version: 0.2.6
+      '@brr-dev/fetcher':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@hookform/resolvers':
         specifier: ^3.4.2
         version: 3.4.2(react-hook-form@7.51.5(react@18.2.0))
@@ -121,6 +127,15 @@ packages:
   '@babel/runtime@7.24.6':
     resolution: {integrity: sha512-Ja18XcETdEl5mzzACGd+DKgaGJzPTCow7EglgwTmHdwokzDFYh/MHua6lU6DV/hjF2IaOJ4oX2nqnjG7RElKOw==}
     engines: {node: '>=6.9.0'}
+
+  '@brr-dev/contentful@0.2.6':
+    resolution: {integrity: sha512-/6YSSLGf0V5OKoKYryOzEPSQ611Gl0LKuWTqRNOGvFGoO0S5KRCX27J0N58HAWSEEV/ehymu/mlERneaUR+GBQ==}
+
+  '@brr-dev/fetcher@1.0.0':
+    resolution: {integrity: sha512-uiewd3XMAkiM6w1WzbjeFpNMxDV5crjX98TqG3GeWOOyM+Dxil5ZZb+5QdiltQPvUN2VdfyrC0NRO/xUgtL35Q==}
+
+  '@brr-dev/testing@1.0.0':
+    resolution: {integrity: sha512-mIqmAu92lesKbGH9xxiZJ3+5+eXPZIL4SfFBdfUU0XyE+IgaAB8/7q6rIiN6wLeQ+4nzBSdhVK736YKLzBJW4A==}
 
   '@eslint-community/eslint-utils@4.4.0':
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -2157,6 +2172,16 @@ snapshots:
   '@babel/runtime@7.24.6':
     dependencies:
       regenerator-runtime: 0.14.1
+
+  '@brr-dev/contentful@0.2.6':
+    dependencies:
+      '@brr-dev/fetcher': 1.0.0
+
+  '@brr-dev/fetcher@1.0.0':
+    dependencies:
+      '@brr-dev/testing': 1.0.0
+
+  '@brr-dev/testing@1.0.0': {}
 
   '@eslint-community/eslint-utils@4.4.0(eslint@8.57.0)':
     dependencies:
